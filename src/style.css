@@ -1,0 +1,25 @@
+.dashboard-side-menu-text {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+}
+.dashboard-side-menu-text:hover {
+  color: #febb04;
+}
+
+.dashboard-side-menulist {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 35px;
+}
+
+.font-style-verdana {
+  font-family: Verdana;
+}
+
+.dashboard-page-middle-right-icon {
+  position: absolute;
+  left: 600px;
+}
