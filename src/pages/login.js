@@ -11,6 +11,28 @@ const Login = () => {
     const [password, setPassword] = useState('');
 
 
+    async function handleSubmit(e) {
+        e.preventDefault()
+        console.log(email, password)
+
+        const data = {
+            email,
+            password
+        }
+
+        const response = await fetch('http://127.0.0.1:3000/api/users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+
+        })
+        const result = await response.json()
+        console.log(result)
+        alert(result.message)
+        window.location.href = '/dashboard'
+    }
 
     return (
         <>
@@ -33,14 +55,26 @@ const Login = () => {
                         <Grid container spacing={2}>
 
                             <Grid item xs={12} sm={12}>
-                                <TextField label="Email" fullWidth name="" required focused />
+                                <TextField label="Email" fullWidth name="" required focused
+                                    value={email}
+                                    onChange={(e) => {
+                                        setEmail(e.target.value)
+                                    }}
+                                />
                             </Grid>
                             <Grid item xs={12} sm={12}>
-                                <TextField label="Password" className='mt-3' fullWidth name="" required focused />
+                                <TextField label="Password" className='mt-3' fullWidth name="" required focused
+                                    value={password}
+                                    onChange={(e) => {
+                                        setPassword(e.target.value)
+                                    }}
+                                />
                             </Grid>
 
                             <Grid item xs={12} sm={12}>
-                                <button className='w-100 p-2 rounded-3 border-0 bg-dark mt-3' style={{ color: "white" }}>Login</button>
+                                <button className='w-100 p-2 rounded-3 border-0 bg-dark mt-3' style={{ color: "white" }}
+                                    onClick={handleSubmit}
+                                >Login</button>
                             </Grid>
                         </Grid>
                         <p className='text-end mt-2 mb-0 fw-semibold' > <a href='' className='text-decoration-none' style={{ color: "#FEBB04" }}>Forgot Password</a></p>

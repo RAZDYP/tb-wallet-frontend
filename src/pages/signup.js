@@ -46,7 +46,7 @@ function SignUp() {
         })
         const result = await response.json()
         console.log(result)
-        alert("User Added to Database Successfully")
+        alert(result.message)
     }
 
 

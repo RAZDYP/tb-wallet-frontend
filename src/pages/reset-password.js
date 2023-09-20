@@ -8,7 +8,30 @@ import Grid from '@mui/material/Grid';
 function ResetPassword() {
 
     const [email, setEmail] = useState('');
-    const [Resetpassword, setResetPassword] = useState('');
+    const [resetPassword, setResetPassword] = useState('');
+
+    async function handleSubmit(e) {
+        e.preventDefault()
+        console.log(email, resetPassword)
+
+        const data = {
+            email,
+            newPassword: resetPassword
+        }
+
+        const response = await fetch('http://127.0.0.1:3000/api/users/updatePassword', {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+
+        const result = await response.json()
+        console.log(result)
+        alert(result.message)
+    }
+
 
     return (
         <>
@@ -32,13 +55,25 @@ function ResetPassword() {
                         <Grid container spacing={2}>
 
                             <Grid item xs={12} sm={12}>
-                                <TextField label="Email" fullWidth name="" required focused />
+                                <TextField label="Email" fullWidth name="" required focused
+                                    value={email}
+                                    onChange={(e) => {
+                                        setEmail(e.target.value)
+                                    }}
+                                />
                             </Grid>
                             <Grid item xs={12} sm={12}>
-                                <TextField label="NewPasswordField" fullWidth name="" required focused />
+                                <TextField label="NewPasswordField" fullWidth name="" required focused
+                                    value={resetPassword}
+                                    onChange={(e) => {
+                                        setResetPassword(e.target.value)
+                                    }}
+                                />
                             </Grid>
                             <Grid item xs={12} sm={12}>
-                                <button className='w-100 p-2 rounded-3 border-0 bg-dark mt-3' style={{ color: "white" }}>Submit</button>
+                                <button className='w-100 p-2 rounded-3 border-0 bg-dark mt-3' style={{ color: "white" }}
+                                    onClick={handleSubmit}
+                                >Submit</button>
                             </Grid>
                         </Grid>
 
