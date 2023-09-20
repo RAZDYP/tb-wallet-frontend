@@ -18,6 +18,8 @@ import CardControl from './components/CardControl';
 import BalanceControl from './components/BalanceControl';
 import AdminSingleUserRegister from './components/AdminSingleUserRegister';
 import AdminUpdateQR from './components/AdminUpdateQR';
+import ActivateCardPayment from './components/ActivateCardPayment';
+import PayAddressComp from './components/PayAddressComp';
 
 
 
@@ -30,13 +32,14 @@ function App() {
         <Route path='/login' element={< Login />}></Route>
         <Route path='/reset-password' element={< ResetPassword />}></Route>
         <Route path='/dashboard' element={< Dashboard />}></Route>
-        <Route path='/send-coin' element={< SendCoinPage />}></Route>
-        <Route path='/receive-coin' element={< ReceiveCoin />}></Route>
+        <Route path='/dashboard/send-coin' element={< SendCoinPage />}></Route>
+        <Route path='/dashboard/receive-coin' element={< ReceiveCoin />}></Route>
         <Route path='/activate-card' element={< ActivateCard />}></Route>
+        <Route path='/activate-card/card-list' element={< CardListPage />}></Route>
+        <Route path='/activate-card/card-list/card-payment' element={< ActivateCardPayment />}></Route>
+        <Route path='/activate-card/card-list/card-payment/card-payment-qr' element={< PayAddressComp />}></Route>
         <Route path='/card-list' element={< CardListPage />}></Route>
-        {/* <Route path='/admin' element={<AdminPanel />}></Route> */}
-        <Route path='/admin' element={<AdminSidePaNel />}></Route>
-        <Route path='/admin/user-details' element={<UserDetails />}></Route>
+        <Route path='/admin' element={<UserDetails />}></Route>
         <Route path='/admin/card-control' element={<CardControl />}></Route>
         <Route path='/admin/balance-control' element={<BalanceControl />}></Route>
         <Route path='/admin/single-user-register' element={<AdminSingleUserRegister />}></Route>
