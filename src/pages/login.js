@@ -31,6 +31,8 @@ const Login = () => {
         const result = await response.json()
         console.log(result)
         alert(result.message)
+        localStorage.setItem('user_id', result.user.userId)
+        localStorage.setItem('email', result.user.email)
         window.location.href = '/dashboard'
     }
 

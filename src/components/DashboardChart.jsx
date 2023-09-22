@@ -13,10 +13,10 @@ import barchart from '../images/bar-chart.png';
 import BarchartRed from '../images/BarChartRed.png';
 import NavTopProfile from './NavTopProfile';
 
-function DashboardChart() {
+function DashboardChart(props) {
     return (
         <div className='col-md-9 p-3 font-style-verdana'>
-            <NavTopProfile />
+            <NavTopProfile user={props.user} />
             <div className='w-100 px-4 pt-2 mt-3'>
                 <h2 className='fw-bold'>Dashboard</h2>
                 <h6 className='fw-semibold opacity-50'>Welcome Back</h6>

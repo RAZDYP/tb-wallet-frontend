@@ -15,14 +15,14 @@ import ActivateCardIcon from '../images/activate-card.png';
 import BsvIcon from '../images/BSV.png';
 import ethIcon from '../images/ETH.png'
 
-function NavTopProfile() {
+function NavTopProfile(props) {
     return (
         <div className='w-100 d-flex justify-content-end pe-3'>
             <div className='d-flex align-items-center'>
                 <img src={bellIcon} width={30} className="me-3" alt="logo" />
                 <img src={ProfileIcone} width={50} className="me-3" alt="logo" />
-                <p className='fw-semibold m-0'>Sam Myers<br></br>
-                    <small className='opacity-50'>sammyers12@gmail.com</small></p>
+                <p className='fw-semibold m-0'>{props.user.firstName} {props.user.lastName} <br></br>
+                    <small className='opacity-50'>{props.user.email}</small></p>
             </div>
         </div>
     )

@@ -33,7 +33,7 @@ function SignUp() {
             firstName,
             lastName,
             email,
-            password
+            password,
         }
 
         const response = await fetch('http://127.0.0.1:3000/api/users/register', {
@@ -92,7 +92,7 @@ function SignUp() {
                                 />
                             </Grid>
                             <Grid item xs={12} sm={12}>
-                                <TextField label="Password" fullWidth name="" required focused className='mt-3' value={password}
+                                <TextField label="Password" fullWidth name="" required focused className='mt-3' value={password} type='password'
                                     onChange={(e) => {
                                         setPassword(e.target.value)
                                         checkPassword()
@@ -100,7 +100,7 @@ function SignUp() {
                                 />
                             </Grid>
                             <Grid item xs={12} sm={12}>
-                                <TextField label="Confirm Password" fullWidth name="" required focused className='mt-3' value={confirmPassword}
+                                <TextField label="Confirm Password" fullWidth name="" required focused className='mt-3' value={confirmPassword} type='password'
                                     onChange={(e) => {
                                         setConfirmPassowrd(e.target.value)
                                         checkPassword()
