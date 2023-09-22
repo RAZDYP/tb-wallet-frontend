@@ -19,27 +19,30 @@ import classicCardIcon from '../images/classic-card.png';
 import OneSingleCard from './OneSingleCard';
 import NavTopProfile from './NavTopProfile';
 
-function SingleCard() {
+function SingleCard(props) {
+
     return (
         <div className='col-md-12 p-3 font-style-verdana' >
-            <NavTopProfile />
+            <NavTopProfile user={props.user} />
             <div className='w-100 px-4 pt-2 mt-3 d-flex flex-column text-center align-items-center'>
                 <h4 className='fw-bold m-0 text-center mb-2'>Activate Debit Card</h4>
                 <img src={MoneyGuarenteeIcon} width={50} className="mb-2" alt="logo" />
                 <p className='m-0'>100% Money Back Guarantee</p>
             </div>
-            <div className='w-100 d-flex align-items-center justify-content-center'>
-                <div className='w-75'>
-                    <hr></hr>
-                </div>
-            </div>
-            <OneSingleCard />
-            <div className='w-100 d-flex align-items-center justify-content-center'>
-                <div className='w-75'>
-                    <hr></hr>
-                </div>
-            </div>
-            <OneSingleCard />
+            {
+                props.cardList.map((card, index) => {
+                    return (
+                        <>
+                            <div className='w-100 d-flex align-items-center justify-content-center'>
+                                <div className='w-75'>
+                                    <hr></hr>
+                                </div>
+                            </div>
+                            <OneSingleCard card={card} handleCardSelect={props.handleCardSelect} />
+                        </>
+                    )
+                })
+            }
 
         </div>
     )

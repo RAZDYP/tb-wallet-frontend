@@ -18,23 +18,26 @@ import MoneyGuarenteeIcon from '../images/moneyGuarentee.png';
 import classicCardIcon from '../images/classic-card.png';
 
 
-function OneSingleCard() {
+function OneSingleCard(props) {
     return (
         <div className='w-100 d-flex align-items-center justify-content-center'>
             <div className='card col-md-5 border-0 px-4 py-3' style={{ backgroundColor: "#C2C0FF1F" }}>
                 <div className='card-header border-0 bg-transparent '>
-                    <p className='m-0 text-center opacity-50 '>Classic Card</p>
+                    <p className='m-0 text-center opacity-50 '>{props.card.name}</p>
                 </div>
                 <div className='card-body d-flex flex-column align-items-center'>
-                    <img src={classicCardIcon} width={350} className="mb-2" alt="logo" />
-                    <h4 className='fw-semibold'>$100</h4>
-                    <p className='fw-semibold opacity-50 m-0 text-center mb-3'>USD in BTC<br></br>Withdrawal limit $1000/Day</p>
+                    <img src={props.card.imageSrc} width={350} className="mb-2" alt="logo" />
+                    <h4 className='fw-semibold'>${props.card.price}</h4>
+                    <p className='fw-semibold opacity-50 m-0 text-center mb-3'>USD in BTC<br></br>Withdrawal limit ${props.card.withdrawalLimit}/Day</p>
                     <div className='opacity-25 mb-4'>
                         <p className='mb-2'>  <FontAwesomeIcon icon={faThumbsUp} />       Instant Approval</p>
                         <p className='mb-2'>  <FontAwesomeIcon icon={faSquareCheck} />  WorldWide Accepted</p>
                         <p className='m-0'>   <FontAwesomeIcon icon={faGift} />  Get Rewards On Purchase</p>
                     </div>
-                    <button className='btn btn-primary rounded-3 border-0 px-5 py-2' style={{ backgroundColor: "#8080FF" }}>Activate Now</button>
+                    <button className='btn btn-primary rounded-3 border-0 px-5 py-2' style={{ backgroundColor: "#8080FF" }}
+                        onClick={() => props.handleCardSelect(props.card.type)}>
+                        Activate Now
+                    </button>
                 </div>
             </div>
         </div>

@@ -17,17 +17,17 @@ import ethIcon from '../images/ETH.png'
 import NavTopProfile from './NavTopProfile';
 
 
-function ActivateCard() {
+function ActivateCard(props) {
     return (
         <div className='col-md-9 p-3 font-style-verdana'>
-            <NavTopProfile />
+            <NavTopProfile user={props.user} />
             <div className='w-100 px-4 pt-2 mt-3'>
                 <h2 className='fw-bold m-0'>Your Card</h2>
             </div>
             <div className='w-100 d-flex align-items-center justify-content-center'>
-                <div>
+                <div className='d-flex align-items-center'>
                     <img src={ActivateCardIcon} width={500} alt="subtract icon" />
-                    <button className='m-0 p-0 border-0 bg-transparent opacity-50 pt-5'><h3 className='fw-semibold'>Activate Card <FontAwesomeIcon icon={faChevronRight} /></h3></button>
+                    <a href='/activate-card/card-list' className='m-0 p-0 border-0 bg-transparent opacity-50 pt-5'><h3 className='fw-semibold'>Activate Card <FontAwesomeIcon icon={faChevronRight} /></h3></a>
                 </div>
 
             </div>
