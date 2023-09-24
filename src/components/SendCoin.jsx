@@ -5,25 +5,8 @@ import NavTopProfile from './NavTopProfile';
 
 function SendCoin(props) {
 
-    const [bitcoinAddress, setBitcoinAddress] = useState('')
+    const [coinAddress, setCoinAddress] = useState('')
     const [amount, setAmount] = useState('')
-
-    const handleSendBitcoin = async () => {
-        const response = await fetch(`http://127.0.0.1:3000/api/wallet/debitBalance`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                bitAddress: bitcoinAddress,
-                btcBalance: amount,
-            })
-        })
-
-        const result = await response.json()
-        console.log(result)
-        alert(result.message)
-    }
 
     return (
         <>
@@ -36,13 +19,13 @@ function SendCoin(props) {
                     <div className='card w-50 py-4 border-0 rounded-5' style={{ backgroundColor: "#C2C0FF1F" }}>
                         <div className='card-body px-4 py-5' >
                             <input type='text' className='form-control mb-4 p-3 rounded-3' style={{ color: "#B8B8B8" }} placeholder='Bitcoin Address'
-                                onChange={(e) => setBitcoinAddress(e.target.value)} value={bitcoinAddress}
+                                onChange={(e) => setCoinAddress(e.target.value)} value={coinAddress}
                             />
                             <input type='number' className='form-control mb-5 p-3 rounded-3' style={{ color: "#B8B8B8" }} placeholder='Enter Amount'
                                 onChange={(e) => setAmount(e.target.value)} value={amount}
                             />
                             <button className='btn btn-dark w-100 p-3 rounded-3 border-0 ' style={{ color: "white", backgroundColor: "#F80F0F" }}
-                                onClick={handleSendBitcoin}
+                                onClick={() => props.handleSendCoin(coinAddress, amount)}
                             >Send</button>
                         </div>
                     </div>
