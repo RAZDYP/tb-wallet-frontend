@@ -14,28 +14,43 @@ function BalanceControl() {
     const [user, setUser] = useState({});
 
     const [walletAddress, setWalletAddress] = useState("");
+    const [coinType, setCoinType] = useState("BTC");
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
-        const email = localStorage.getItem("email");
+        const token = localStorage.getItem('token')
+        const email = localStorage.getItem('email')
         const getUser = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/users/find`, {
-                method: "POST",
+            const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${email}`, {
+                method: 'GET',
                 headers: {
-                    "Content-Type": "application/json",
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email }),
-            });
+            })
 
-            const result = await response.json();
-            setUser(result.user);
-        };
+            const result = await response.json()
+            console.log(result)
+            setUser(result.user)
+        }
 
-        getUser();
+        getUser()
     }, []);
 
+    const handleCoinType = async (address) => {
+        let coinType;
+        const coinStart = address.slice(0, 2);
+        if (coinStart === "bc") {
+            coinType = "Bit";
+        } else if (coinStart === "0x") {
+            coinType = "Eth";
+        }
+        return coinType;
+    }
+
     const handleFindWallet = async () => {
-        const response = await fetch(`http://127.0.0.1:3000/api/wallet/findAddress?address=${walletAddress}`, {
+        const coinType = await handleCoinType(walletAddress);
+        console.log(coinType.toLowerCase());
+
+        const response = await fetch(`http://127.0.0.1:3000/api/wallet/findBy${coinType}?${coinType.toLowerCase()}Address=${walletAddress}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

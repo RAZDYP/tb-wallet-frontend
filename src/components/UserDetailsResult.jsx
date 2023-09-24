@@ -56,12 +56,11 @@ function UserDetailResults() {
         getUserDetails()
 
         const getWalletDetails = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/wallet/find`, {
-                method: 'POST',
+            const response = await fetch(`http://127.0.0.1:3000/api/wallet/find?email=${userEmail}`, {
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email: userEmail })
             })
 
             const result = await response.json()
