@@ -18,15 +18,27 @@ function Dashboard() {
     const [user, setUser] = useState({});
 
     useEffect(() => {
+        const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
         const firstName = localStorage.getItem('firstName')
         const lastName = localStorage.getItem('lastName')
+        
+        const getUser = async () => {
+            const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${email}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
 
-        setUser({
-            email,
-            firstName,
-            lastName
-        })
+            const result = await response.json()
+            console.log(result)
+            setUser(result.user)
+
+        }
+
+        getUser()
+        // setUser(result.user)
     }, [])
 
     return (

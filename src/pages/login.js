@@ -20,7 +20,7 @@ const Login = () => {
             password
         }
 
-        const response = await fetch('https://tb-wallet.onrender.com/api/users/login', {
+        const response = await fetch('http://127.0.0.1:3000/api/users/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -33,8 +33,6 @@ const Login = () => {
         alert(result.message)
         localStorage.setItem('user_id', result.user.userId)
         localStorage.setItem('email', result.user.email)
-        localStorage.setItem('firstName', result.user.firstName)
-        localStorage.setItem('lastName', result.user.lastName)
         window.location.href = '/dashboard'
     }
 
