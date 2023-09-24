@@ -17,13 +17,13 @@ function UserDetails() {
     useEffect(() => {
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
+
         const getUser = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/users/find`, {
-                method: 'POST',
+            const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${email}`, {
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email })
             })
 
             const result = await response.json()
@@ -35,12 +35,11 @@ function UserDetails() {
     }, [])
 
     const handleFindUser = async () => {
-        const response = await fetch(`http://127.0.0.1:3000/api/users/find`, {
-            method: 'POST',
+        const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${email}`, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ email })
         })
 
         const result = await response.json()
