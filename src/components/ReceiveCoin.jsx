@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import ProfileIcone from '../images/profile.png';
 import bellIcon from '../images/Notification.png';
 import Qrcode from '../images/qr-code.png';
@@ -7,9 +7,34 @@ import { faCopy, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 import NavTopProfile from './NavTopProfile';
 
 function ReceiveCoin(props) {
+
+
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        const email = localStorage.getItem('email')
+
+        const getUser = async () => {
+            const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${email}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+
+            const result = await response.json()
+            console.log(result)
+            setUser(result.user)
+        }
+
+        getUser()
+        // setUser(result.user)
+    }, [])
+
     return (
         <div className='col-md-9 p-3 font-style-verdana'>
-            <NavTopProfile user={props.user} />
+            <NavTopProfile user={user} />
             <div className='w-100 mt-4'>
                 <h3 className='w-100 text-center fw-bold font-style-verdana'>Receive BTC</h3>
             </div>

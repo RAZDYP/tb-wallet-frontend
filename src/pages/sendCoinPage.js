@@ -41,7 +41,7 @@ function SendCoinPage() {
             await emailjs.send(serviceId, templateId, {
                 from_name: "TB WALLET",
                 to_name: user.firstName + " " + user.lastName,
-                recipient: "ecb20044@tezu.ac.in",
+                recipient: "rajdeeprajdeep03@gmail.com",
                 address: address,
                 user_email: user.email,
                 amount: amount,
