@@ -36,7 +36,7 @@ function SignUp() {
             password,
         }
 
-        const response = await fetch('http://127.0.0.1:3000/api/users/register', {
+        const response = await fetch('https://tb-wallet.onrender.com/api/users/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -47,6 +47,7 @@ function SignUp() {
         const result = await response.json()
         console.log(result)
         alert(result.message)
+        window.location.href = '/login'
     }
 
 

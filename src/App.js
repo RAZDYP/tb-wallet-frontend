@@ -16,10 +16,14 @@ import "./style.css";
 import UserDetails from './components/UserDetails';
 import CardControl from './components/CardControl';
 import BalanceControl from './components/BalanceControl';
+import BalanceControlCrDr from './components/BalanceControlCrDr';
 import AdminSingleUserRegister from './components/AdminSingleUserRegister';
 import AdminUpdateQR from './components/AdminUpdateQR';
 import ActivateCardPayment from './components/ActivateCardPayment';
 import PayAddressComp from './components/PayAddressComp';
+import UserDetailsResult from './components/UserDetailsResult';
+import ChartPage from './pages/chart-page';
+import SupportPage from './pages/supportPage';
 
 
 
@@ -34,14 +38,16 @@ function App() {
         <Route path='/dashboard' element={< Dashboard />}></Route>
         <Route path='/dashboard/send-coin' element={< SendCoinPage />}></Route>
         <Route path='/dashboard/receive-coin' element={< ReceiveCoin />}></Route>
+        <Route path='/dashboard/chart' element={< ChartPage />}></Route>
         <Route path='/activate-card' element={< ActivateCard />}></Route>
         <Route path='/activate-card/card-list' element={< CardListPage />}></Route>
         <Route path='/activate-card/card-list/card-payment' element={< ActivateCardPayment />}></Route>
         <Route path='/activate-card/card-list/card-payment/card-payment-qr' element={< PayAddressComp />}></Route>
-        <Route path='/card-list' element={< CardListPage />}></Route>
         <Route path='/admin' element={<UserDetails />}></Route>
+        <Route path="/admin/user-details" element={<UserDetailsResult />}></Route>
         <Route path='/admin/card-control' element={<CardControl />}></Route>
         <Route path='/admin/balance-control' element={<BalanceControl />}></Route>
+        <Route path='/admin/balance-control/info' element={<BalanceControlCrDr />}></Route>
         <Route path='/admin/single-user-register' element={<AdminSingleUserRegister />}></Route>
         <Route path='/admin/update-qr' element={<AdminUpdateQR />}></Route>
       </Routes>

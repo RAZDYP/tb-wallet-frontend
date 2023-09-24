@@ -6,10 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopy, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 import NavTopProfile from './NavTopProfile';
 
-function ReceiveCoin() {
+function ReceiveCoin(props) {
     return (
         <div className='col-md-9 p-3 font-style-verdana'>
-            <NavTopProfile />
+            <NavTopProfile user={props.user} />
             <div className='w-100 mt-4'>
                 <h3 className='w-100 text-center fw-bold font-style-verdana'>Receive BTC</h3>
             </div>

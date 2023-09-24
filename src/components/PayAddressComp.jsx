@@ -9,13 +9,36 @@ import AdminSidePaNel from './AdminSidePanel';
 import BitcoinAcceptedIcon from '../images/BitcoinAccepted.png';
 import ActivateCardIcon from '../images/activate-card.png';
 import MoneyGuarenteeIcon from '../images/moneyGuarentee.png';
+import { useState, useEffect } from 'react';
 
 function PayAddressComp() {
+    const [user, setUser] = useState({});
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        const email = localStorage.getItem('email')
+        const getUser = async () => {
+            const response = await fetch(`http://127.0.0.1:3000/api/users/find`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+            })
+
+            const result = await response.json()
+            console.log(result)
+            setUser(result.user)
+
+        }
+
+        getUser()
+        // setUser(result.user)
+    }, [])
     return (
         <div className='d-flex justify-content-between'>
             <AdminSidePaNel />
             <div className='col-md-9 p-3 font-style-verdana' style={{ overflow: "scroll", height: "100vh" }}>
-                <NavTopProfile />
+                <NavTopProfile user={user} />
                 <div className='w-100 mt-4 d-flex flex-column align-items-center'>
                     <img src={BitcoinAcceptedIcon} className="img-fluid mb-3" alt="logo" />
                     <h4 className='w-100 text-center fw-bold font-style-verdana'>Scan or Copy Address to Pay</h4>

@@ -12,14 +12,14 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import AdminSidePaNel from './AdminSidePanel';
 
-function AdminSingleUserRegister() {
+function AdminSingleUserRegister(props) {
     return (
         <>
             <div className='d-flex justify-content-between'>
                 <AdminSidePaNel />
 
                 <div className='col-md-9 p-3 font-style-verdana' style={{ overflowY: "scroll", height: "100vh" }}>
-                    <NavTopProfile />
+                    <NavTopProfile user={props.user} />
                     <div className='w-100 mt-3'>
                         <h3 className='w-100 text-center fw-bold font-style-verdana'>Single User Register</h3>
                     </div>
