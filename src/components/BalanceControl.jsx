@@ -59,7 +59,7 @@ function BalanceControl() {
 
         const result = await response.json();
         console.log(result);
-        window.location.href = `/admin/balance-control/info?address=${walletAddress}`;
+        window.location.href = `/admin/balance-control/info?address=${walletAddress}&type=${coinType.toLowerCase()}`;
     };
 
     return (
