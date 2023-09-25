@@ -4,11 +4,16 @@ import abstract from '../images/wepik-export-202309030832352E51-PhotoRoom 3.png'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const Login = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false)
 
 
     async function handleSubmit(e) {
@@ -34,6 +39,10 @@ const Login = () => {
         localStorage.setItem('user_id', result.user.userId)
         localStorage.setItem('email', result.user.email)
         window.location.href = '/dashboard'
+    }
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
     }
 
     return (
@@ -65,10 +74,21 @@ const Login = () => {
                                 />
                             </Grid>
                             <Grid item xs={12} sm={12}>
-                                <TextField label="Password" className='mt-3' fullWidth name="" required focused
+                                <TextField label="Password" className='mt-3' fullWidth name="" required focused type={showPassword ? 'text' : 'password'}
                                     value={password}
                                     onChange={(e) => {
                                         setPassword(e.target.value)
+                                    }}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    onClick={togglePasswordVisibility}
+                                                >
+                                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        )
                                     }}
                                 />
                             </Grid>

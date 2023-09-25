@@ -32,6 +32,7 @@ import ReceiveCoinBtc from './pages/receive-coin-btc';
 import ReceiveCoinEth from './pages/receive-coin-eth';
 import DashboardSettingsPage from './pages/dashboard-settings-page';
 import Home from './pages/home';
+import Logout from './pages/logout';
 import SideMenu from './components/SideMenu';
 
 
@@ -86,8 +87,7 @@ function App() {
         <Route path='/single-user-register' element={<AdminSingleUserRegister />}></Route>
         <Route path='/update-qr' element={<AdminUpdateQR />}></Route>
 
-
-
+        <Route path='/logout' element={<Logout />}></Route>
 
 
         <Route path='/admin/balance-control/info' element={<BalanceControlCrDr />}></Route>

@@ -55,7 +55,7 @@ function AdminSidePaNel() {
                 <div className='card-footer ps-5 ms-3'>
                     <div className='d-flex align-items-center mb-5'>
                         <img src={logoutIcon} width={25} className="me-4" alt="logo" />
-                        <a href='' className='m-0 dashboard-side-menu-text'>Log Out</a>
+                        <a href='/logout' className='m-0 dashboard-side-menu-text'>Log Out</a>
                     </div>
 
                 </div>
