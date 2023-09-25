@@ -32,6 +32,7 @@ import ReceiveCoinBtc from './pages/receive-coin-btc';
 import ReceiveCoinEth from './pages/receive-coin-eth';
 import DashboardSettingsPage from './pages/dashboard-settings-page';
 import Home from './pages/home';
+import SideMenu from './components/SideMenu';
 
 
 

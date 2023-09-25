@@ -40,7 +40,7 @@ function Dashboard() {
     return (
         <>
             <div className=' col-md-12 d-flex'>
-                <SideMenu />
+                <SideMenu page={"dashboard"} />
                 <DashboardChart user={user} />
             </div>
         </>

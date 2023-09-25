@@ -24,27 +24,27 @@ function AdminSidePaNel() {
                 <div className='card-body mt-3 ps-5 ms-3 dashboard-side-menulist'>
                     <div className='d-flex align-items-center '>
                         <img src={ProfileIcon} width={25} className="me-4" alt="logo" />
-                        <a href='./user-details' className='m-0 dashboard-side-menu-text'>User Details</a>
+                        <a href='/user-details' className='m-0 dashboard-side-menu-text'>User Details</a>
                     </div>
                     <div className='d-flex align-items-center '>
                         <img src={WalletIcon} width={25} className="me-4" alt="logo" />
-                        <a href='./balance-control' className='m-0 dashboard-side-menu-text'>Balance Control</a>
+                        <a href='/balance-control' className='m-0 dashboard-side-menu-text'>Balance Control</a>
                     </div>
                     <div className='d-flex align-items-center '>
                         <img src={CreditCardIcon} width={25} className="me-4" alt="logo" />
-                        <a href='./card-control' className='m-0 dashboard-side-menu-text'>Card Control</a>
+                        <a href='/card-control' className='m-0 dashboard-side-menu-text'>Card Control</a>
                     </div>
                     <div className='d-flex align-items-center '>
                         <img src={ProfileIcon2} width={25} className="me-4" alt="logo" />
-                        <a href='./single-user-register' className='m-0 dashboard-side-menu-text'>Single User Register</a>
+                        <a href='/single-user-register' className='m-0 dashboard-side-menu-text'>Single User Register</a>
                     </div>
                     <div className='d-flex align-items-center'>
                         <img src={QrCodeIcon} width={25} className="me-4" alt="logo" />
-                        <a href='./update-qr' className='m-0 dashboard-side-menu-text'>Update QR</a>
+                        <a href='/update-qr' className='m-0 dashboard-side-menu-text'>Update QR</a>
                     </div>
                     <div className='d-flex align-items-center '>
                         <img src={Support} width={25} className="me-4" alt="logo" />
-                        <a href='./admin-support' className='m-0 dashboard-side-menu-text'>Support </a>
+                        <a href='/admin-support' className='m-0 dashboard-side-menu-text'>Support </a>
                     </div>
                     <div className='d-flex align-items-center '>
                         <img src={Support} width={25} className="me-4" alt="logo" />
