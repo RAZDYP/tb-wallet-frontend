@@ -40,35 +40,40 @@ function CardListPage() {
             price: 100,
             withdrawalLimit: 1000,
             imageSrc: classicCardIcon,
-            type: 'CLASSIC'
+            type: 'CLASSIC',
+            query: "classic"
         },
         {
             name: 'Merchant Card',
             price: 200,
             withdrawalLimit: 20000,
             imageSrc: MerchantIcon,
-            type: 'MERCHANT'
+            type: 'MERCHANT',
+            query: "merchant"
         },
         {
             name: 'Silver Card',
             price: 500,
             withdrawalLimit: 50000,
             imageSrc: SilverIcon,
-            type: 'SILVER'
+            type: 'SILVER',
+            query: "silver"
         },
         {
             name: 'Gold Card',
             price: 1000,
             withdrawalLimit: 100000,
             imageSrc: GoldIcon,
-            type: 'GOLD'
+            type: 'GOLD',
+            query: "gold"
         },
         {
             name: 'Platinum Card',
             price: 2000,
             withdrawalLimit: 200000,
             imageSrc: PlatinumIcon,
-            type: 'PLATINUM'
+            type: 'PLATINUM',
+            query: "platinum"
         }
     ]
 

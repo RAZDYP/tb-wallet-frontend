@@ -13,6 +13,7 @@ import Grid from '@mui/material/Grid';
 import ActivateCard from './ActivateCard';
 import { useState, useEffect } from 'react';
 import AdminSidePaNel from './AdminSidePanel';
+import { useSearchParams } from 'react-router-dom';
 
 
 const countries = [
@@ -213,8 +214,13 @@ const countries = [
 ];
 function ActivateCardPayment() {
 
+    const [searchParams] = useSearchParams()
     const [user, setUser] = useState({});
+
+    const [cardType, setCardType] = useState(null);
+
     useEffect(() => {
+        setCardType(searchParams.get('type'))
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
 
@@ -243,7 +249,7 @@ function ActivateCardPayment() {
                 <div className='col-md-9 p-3 font-style-verdana'>
                     <NavTopProfile user={user} />
                     <div className='w-100 mt-3'>
-                        <h3 className='w-100 text-center fw-bold font-style-verdana'>Merchant Master Card</h3>
+                        <h3 className='w-100 text-center fw-bold font-style-verdana'>{cardType ? cardType[0].toUpperCase() + cardType.slice(1) : null} Card</h3>
                     </div>
                     <div className='w-100 mt-3 d-flex align-items-center justify-content-center'>
                         <div className='card w-75 py-3 border-0 rounded-5' style={{ backgroundColor: "#C2C0FF1F" }}>

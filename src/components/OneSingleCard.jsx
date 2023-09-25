@@ -34,8 +34,7 @@ function OneSingleCard(props) {
                         <p className='mb-2'>  <FontAwesomeIcon icon={faSquareCheck} />  WorldWide Accepted</p>
                         <p className='m-0'>   <FontAwesomeIcon icon={faGift} />  Get Rewards On Purchase</p>
                     </div>
-                    <a href='../activate-card/card-list/card-payment'><button className='btn btn-primary rounded-3 border-0 px-5 py-2' style={{ backgroundColor: "#8080FF" }}
-                        onClick={() => props.handleCardSelect(props.card.type)}>
+                    <a href={`../activate-card/card-list/card-payment?type=${props.card.query}`}><button className='btn btn-primary rounded-3 border-0 px-5 py-2' style={{ backgroundColor: "#8080FF" }}>
                         Activate Now
                     </button></a>
 
