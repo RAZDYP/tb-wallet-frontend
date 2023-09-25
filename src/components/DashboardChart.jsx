@@ -35,7 +35,7 @@ function DashboardChart(props) {
                             <div className='card-header border-0 bg-transparent d-flex justify-content-between align-items-center'>
                                 <div>
                                     <p className='m-0 small fw-semibold text-start opacity-50'>Bitcoin</p>
-                                    <h5 className='fw-semibold'>$24000.50</h5>
+                                    <h5 className='fw-semibold'>${props.currentRateBtc ? props.currentRateBtc.toFixed(2) : null}</h5>
                                 </div>
                                 <FontAwesomeIcon icon={faChartSimple} />
                             </div>
@@ -51,7 +51,7 @@ function DashboardChart(props) {
                             <div className='card-header border-0 bg-transparent d-flex justify-content-between align-items-center'>
                                 <div>
                                     <p className='m-0 small fw-semibold text-start opacity-50'>Ethereum</p>
-                                    <h5 className='fw-semibold'>$1850.50</h5>
+                                    <h5 className='fw-semibold'>${props.currentRateEth ? props.currentRateEth.toFixed(2) : null}</h5>
                                 </div>
                                 <FontAwesomeIcon icon={faChartSimple} />
                             </div>

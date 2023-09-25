@@ -16,6 +16,9 @@ import ActivateCard from '../components/ActivateCard';
 function Dashboard() {
 
     const [user, setUser] = useState({});
+    const [currentRateBtc, setCurrentRateBtc] = useState(null)
+    const [currentRateEth, setCurrentRateEth] = useState(null)
+
     useEffect(() => {
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
@@ -34,6 +37,38 @@ function Dashboard() {
         }
 
         getUser()
+
+        const handleCurrentAmountBtc = async () => {
+            const response = await fetch('https://rest.coinapi.io/v1/exchangerate/BTC/USD', {
+                method: 'GET',
+                headers: {
+                    "X-CoinAPI-Key": "CBB9015C-0B0A-417F-90F9-8F87E358AB3D"
+                }
+            })
+
+            const result = await response.json()
+            console.log(result)
+            setCurrentRateBtc(result.rate)
+        }
+
+        handleCurrentAmountBtc()
+
+        const handleCurrentAmountEth = async () => {
+            const response = await fetch('https://rest.coinapi.io/v1/exchangerate/ETH/USD', {
+                method: 'GET',
+                headers: {
+                    "X-CoinAPI-Key": "CBB9015C-0B0A-417F-90F9-8F87E358AB3D"
+                }
+            })
+
+            const result = await response.json()
+            console.log(result)
+            setCurrentRateEth(result.rate)
+        }
+
+        setTimeout(() => {
+            handleCurrentAmountEth()
+        }, 1000)
         // setUser(result.user)
     }, [])
 
@@ -41,7 +76,7 @@ function Dashboard() {
         <>
             <div className=' col-md-12 d-flex'>
                 <SideMenu page={"dashboard"} />
-                <DashboardChart user={user} />
+                <DashboardChart user={user} currentRateBtc={currentRateBtc} currentRateEth={currentRateEth} />
             </div>
         </>
     )

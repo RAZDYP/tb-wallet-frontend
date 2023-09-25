@@ -5,6 +5,8 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import { useState } from 'react';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 function SignUp() {
 
@@ -15,6 +17,8 @@ function SignUp() {
     const [confirmPassword, setConfirmPassowrd] = useState('')
     const [referralCode, setReferralCode] = useState('')
 
+    const [openSnackbar, setOpenSnackbar] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
     const [isPasswordMatch, setIsPasswordMatch] = useState(false)
 
     function checkPassword() {
@@ -46,8 +50,12 @@ function SignUp() {
         })
         const result = await response.json()
         console.log(result)
-        alert(result.message)
-        window.location.href = '/login'
+        setSnackbarMessage(result.message);
+        setOpenSnackbar(true);
+        // window.location.href = '/login'
+        setTimeout(() => {
+            window.location.href = '/login'
+        }, 3000)
     }
 
 
@@ -128,6 +136,11 @@ function SignUp() {
 
                 </div>
             </div>
+            <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={() => setOpenSnackbar(false)} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+                <Alert onClose={() => setOpenSnackbar(false)} severity="success" sx={{ width: '100%' }}>
+                    {snackbarMessage}
+                </Alert>
+            </Snackbar>
 
         </>
     )

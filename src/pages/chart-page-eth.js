@@ -11,6 +11,9 @@ Chart.register(CategoryScale);
 function EthChartPage() {
 
     const [user, setUser] = useState({});
+    const [currentRate, setCurrentRate] = useState(null)
+
+
     useEffect(() => {
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
@@ -29,6 +32,21 @@ function EthChartPage() {
         }
 
         getUser()
+
+        const handleCurrentAmount = async () => {
+            const response = await fetch('https://rest.coinapi.io/v1/exchangerate/ETH/USD', {
+                method: 'GET',
+                headers: {
+                    "X-CoinAPI-Key": "CBB9015C-0B0A-417F-90F9-8F87E358AB3D"
+                }
+            })
+
+            const result = await response.json()
+            console.log(result)
+            setCurrentRate(result.rate)
+        }
+
+        handleCurrentAmount()
         // setUser(result.user)
     }, [])
 
@@ -88,7 +106,7 @@ function EthChartPage() {
                     </div>
                     <div className='w-100 text-start mt-3 px-5'>
                         <p className='mb-1 opacity-50 small'>Available Balance</p>
-                        <h4 className='fw-bold'>$5,643.50</h4>
+                        <h4 className='fw-bold'>${currentRate ? currentRate.toFixed(2) : null}</h4>
                     </div>
                     <div className='w-100 px-5'>
                         <div className='card w-100 mt-4'>
