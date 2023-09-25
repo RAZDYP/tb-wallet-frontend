@@ -3,7 +3,7 @@ import SideMenu from '../components/SideMenu'
 import SendCoin from '../components/SendCoin'
 import emailjs from "@emailjs/browser";
 
-function SendCoinPage() {
+function SendCoinBtc() {
 
     const [user, setUser] = useState({});
 
@@ -29,9 +29,20 @@ function SendCoinPage() {
         // setUser(result.user)
     }, [])
 
+
     const cointypeList = [
-        { id: 1, name: 'BTC' },
-        { id: 2, name: 'ETH' },
+        {
+            id: 1,
+            name: 'BTC',
+            placeholder: 'Enter BTC Address'
+
+        },
+        {
+            id: 2,
+            name: 'ETH',
+            placeholder: 'Enter ETH Address'
+        }
+
     ]
 
     const handleSendCoin = async (address, amount) => {
@@ -58,9 +69,10 @@ function SendCoinPage() {
     return (
         <div className='col-md-12 d-flex'>
             <SideMenu />
-            <SendCoin user={user} handleSendCoin={handleSendCoin} />
+            <SendCoin user={user} handleSendCoin={handleSendCoin} cointypeList={cointypeList[0]}
+            />
         </div>
     )
 }
 
-export default SendCoinPage
+export default SendCoinBtc

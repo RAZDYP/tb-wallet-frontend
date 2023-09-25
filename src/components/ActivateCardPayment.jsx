@@ -214,28 +214,27 @@ const countries = [
 function ActivateCardPayment() {
 
     const [user, setUser] = useState({});
-
     useEffect(() => {
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
+
         const getUser = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/users/find`, {
-                method: 'POST',
+            const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${email}`, {
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email })
             })
 
             const result = await response.json()
             console.log(result)
             setUser(result.user)
-
         }
 
         getUser()
         // setUser(result.user)
     }, [])
+
     return (
         <>
             <div className='col-md-12 d-flex'>
@@ -252,22 +251,22 @@ function ActivateCardPayment() {
                                 <Box component="form" sx={{ mt: 2, width: "100%" }}>
                                     <Grid container spacing={2}>
                                         <Grid item xs={12} sm={6}>
-                                            <TextField label="Full Name" fullWidth name="" required focused />
+                                            <TextField label="Full Name" fullWidth name="" focused />
                                         </Grid>
                                         <Grid item xs={12} sm={6}>
-                                            <TextField label="Last Name" fullWidth name="" required focused />
+                                            <TextField label="Last Name" fullWidth name="" focused />
                                         </Grid>
                                         <Grid item xs={12} sm={12}>
-                                            <TextField label="Email Address" fullWidth name="" required focused />
+                                            <TextField label="Email Address" fullWidth name="" focused />
                                         </Grid>
                                         <Grid item xs={12} sm={12}>
-                                            <TextField label="BTC Address" fullWidth name="" required focused />
+                                            <TextField label="BTC Address" fullWidth name="" focused />
                                         </Grid>
                                         <Grid item xs={12} sm={12}>
-                                            <TextField label="Phone" fullWidth name="" required focused />
+                                            <TextField label="Phone" fullWidth name="" focused />
                                         </Grid>
                                         <Grid item xs={12} sm={12}>
-                                            <TextField label="Address" fullWidth name="" required focused />
+                                            <TextField label="Address" fullWidth name="" focused />
                                         </Grid>
                                         <Grid item xs={12} sm={12}>
                                             <p className='mb-2 fw-semibold opacity-75'>Select Country</p>
@@ -280,9 +279,10 @@ function ActivateCardPayment() {
                                             </select>
                                         </Grid>
 
-                                        <Grid item xs={12} sm={12}>
-                                            <button className='w-100 p-2 rounded-3 border-0 mt-2' style={{ color: "white", backgroundColor: "#F80F0F" }}>PROCEED  TO PAYMENT</button>
-                                        </Grid>
+                                        <div className='mt-4 px-3 w-100'>
+                                            <a href='/activate-card/card-list/card-payment/card-payment-qr' className='text-decoration-none w-100 text-center'><div className='w-100 p-2 rounded-3 border-0 mt-2' style={{ color: "white", backgroundColor: "#F80F0F" }}>PROCEED  TO PAYMENT</div></a>
+
+                                        </div>
 
                                     </Grid>
                                 </Box>

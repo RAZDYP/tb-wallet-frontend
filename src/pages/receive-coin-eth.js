@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import SideMenu from '../components/SideMenu';
-import ActivateCard from '../components/ActivateCard';
+import ReceiveCoin from '../components/ReceiveCoin';
+import { useState, useEffect } from 'react';
 
-function ActivateCardPage() {
-
+function ReceiveCoinEth() {
     const [user, setUser] = useState({});
+
     useEffect(() => {
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
@@ -25,16 +26,29 @@ function ActivateCardPage() {
         getUser()
         // setUser(result.user)
     }, [])
-
+    const cointypeList = [
+        {
+            id: 1,
+            name: 'BTC',
+            imageSrcQR: 'https://www.trustedbitcoinwallet.com/wp-content/uploads/2021/07/btc.png',
+            Address: 'bc1w1KoPbwJ2hB03HEy73rWOZI6QeDSWhwy3Mp7o0'
+        },
+        {
+            id: 2,
+            name: 'ETH',
+            imageSrcQR: 'https://www.trustedbitcoinwallet.com/wp-content/uploads/2021/07/eth.png',
+            Address: '0xJ96TSYO8itBFOl3x4cPBVGuGubaWnLxlqVgnDuq'
+        }
+    ]
 
     return (
         <>
             <div className=' col-md-12 d-flex'>
                 <SideMenu />
-                <ActivateCard user={user} />
+                <ReceiveCoin user={user} cointypeList={cointypeList[1]} />
             </div>
         </>
     )
 }
 
-export default ActivateCardPage
+export default ReceiveCoinEth

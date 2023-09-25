@@ -13,12 +13,14 @@ function SendCoin(props) {
             <div className='col-md-9 p-3 font-style-verdana'>
                 <NavTopProfile user={props.user} />
                 <div className='w-100 mt-5'>
-                    <h3 className='w-100 text-center fw-bold font-style-verdana'>Send BTC</h3>
+                    <h3 className='w-100 text-center fw-bold font-style-verdana'>Send
+                        {props.cointypeList.name}
+                    </h3>
                 </div>
                 <div className='w-100 mt-5 d-flex align-items-center justify-content-center'>
                     <div className='card w-50 py-4 border-0 rounded-5' style={{ backgroundColor: "#C2C0FF1F" }}>
                         <div className='card-body px-4 py-5' >
-                            <input type='text' className='form-control mb-4 p-3 rounded-3' style={{ color: "#B8B8B8" }} placeholder='Bitcoin Address'
+                            <input type='text' className='form-control mb-4 p-3 rounded-3' style={{ color: "#B8B8B8" }} placeholder={props.cointypeList.placeholder}
                                 onChange={(e) => setCoinAddress(e.target.value)} value={coinAddress}
                             />
                             <input type='number' className='form-control mb-5 p-3 rounded-3' style={{ color: "#B8B8B8" }} placeholder='Enter Amount'

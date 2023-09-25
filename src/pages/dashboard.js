@@ -16,11 +16,10 @@ import ActivateCard from '../components/ActivateCard';
 function Dashboard() {
 
     const [user, setUser] = useState({});
-
     useEffect(() => {
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
-        
+
         const getUser = async () => {
             const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${email}`, {
                 method: 'GET',

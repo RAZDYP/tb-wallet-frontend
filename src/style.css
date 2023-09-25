@@ -23,3 +23,512 @@
   position: absolute;
   left: 600px;
 }
+.dashboard-authors-name {
+  position: absolute;
+  left: 780px;
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+
+/* DASHBOARD CSS */
+
+body,
+html,
+.dashboard-item a,
+.right-section2 h2 {
+  margin: 0;
+  padding: 0;
+  font-family: "Prompt", sans-serif;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #1e1d23;
+  color: #fff;
+  padding: 10px;
+}
+
+.logo {
+  margin-left: 10px;
+}
+
+.logo-text {
+  font-family: "Prompt", sans-serif;
+  font-size: 30px;
+  color: #febb04;
+  font-weight: 600;
+  line-height: 27.5px;
+}
+
+.nav-options li {
+  margin-right: 14px;
+}
+
+.nav-options li a {
+  color: #ffffff;
+  font-family: Outfit;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  text-align: left;
+  line-height: 28px;
+}
+
+.login-btn {
+  background-color: #febb04;
+  width: 140px;
+  height: 50px;
+  border-radius: 10px;
+  color: #fff;
+  font-family: Outfit;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 27.5px;
+  text-align: center;
+  border: none;
+  margin-left: 15px;
+}
+
+/* SECTION 1 */
+.box1 {
+  margin-top: 50px;
+  margin-left: 60px;
+  color: #ffffff;
+  padding: 20px;
+}
+
+.box1 p {
+  font-family: "Prompt", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.getstarted-btn {
+  width: 230px;
+  height: 81px;
+  border-radius: 10px;
+  background-color: #febb04;
+  color: #fff;
+  font-family: "Prompt", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 27.5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+}
+
+.box2 {
+  margin-top: 50px;
+}
+
+/* SECTION 2 COUNTER SECTION */
+.counter-section {
+  padding: 2.5rem 0;
+  color: #ffffff;
+  font-family: Outfit;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 0em;
+}
+
+.counter-section p {
+  color: #ffffff;
+  font-family: Outfit;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+}
+
+/* SECTION 3 */
+.section3-box1 {
+  margin-top: 50px;
+  margin-left: 0px;
+  padding: 20px;
+}
+
+.section3-box2 {
+  margin-top: 50px;
+  margin-right: 5px;
+  color: #ffffff;
+  padding: 20px;
+}
+
+.trusted-wallet {
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0.1em;
+  text-align: left;
+}
+
+.top-notch-security {
+  font-family: Outfit;
+  font-size: 54px;
+  font-weight: 600;
+  line-height: 54px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.we-are-known {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: left;
+  width: 295px;
+  height: 110.26px;
+  margin-top: 30px;
+  left: 738px;
+}
+
+/* SECTION 4 */
+.section4-box1 {
+  margin-top: 50px;
+  margin-left: 60px;
+  color: #ffffff;
+  padding: 20px;
+}
+
+.easy {
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0.1em;
+  text-align: left;
+}
+
+.global {
+  font-family: Outfit;
+  font-size: 54px;
+  font-weight: 600;
+  line-height: 54px;
+  letter-spacing: 0em;
+  text-align: left;
+  width: 540px;
+  height: 122px;
+  margin-top: 15px;
+}
+
+.we-are {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: left;
+  width: 365.58px;
+  height: 110.26px;
+  margin-bottom: 30px;
+}
+
+.section4-box1 a {
+  font-family: "Prompt", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0.1em;
+  text-align: left;
+  width: 151px;
+  height: 35px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.section4-box1 a:hover {
+  text-decoration: underline;
+  text-decoration-color: #febb04;
+}
+
+/* SECTION 5 */
+.section5 {
+  width: 1065px;
+  height: 148px;
+  color: #ffffff;
+  margin-left: 30px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0.1em;
+  text-align: left;
+  margin-bottom: 50px;
+}
+
+.section5-images {
+  background-color: #00000024;
+  margin-top: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* section 6 */
+.section6 {
+  text-align: center;
+  color: #ffffff;
+}
+
+.section6 p {
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section6 h1 {
+  font-family: Outfit;
+  font-size: 54px;
+  font-weight: 600;
+  line-height: 54px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+/* SECTION 7 */
+.profile-card {
+  display: flex;
+  margin-bottom: 40px;
+  position: relative;
+  margin-right: 25px;
+  margin-top: 100px;
+}
+
+.profile-img {
+  width: 120px;
+  position: absolute;
+  top: -18%;
+  left: 30%;
+  z-index: 1;
+}
+
+.profile-description {
+  color: #ffffff;
+  background-color: #02020329;
+  padding-top: 100px;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  padding-bottom: 70px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.profile-img img {
+  max-width: 100%;
+  height: auto;
+}
+
+.profile-description h1 {
+  text-align: center;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0.1em;
+}
+
+.profile-description p {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+/* SECTION 8 */
+.section8 {
+  background-image: url("./images/footer-bg.png");
+  opacity: 100%;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section8 p {
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: #ffffff;
+}
+
+.section8 h1 {
+  font-family: Poly;
+  font-size: 84px;
+  font-weight: 400;
+  line-height: 84px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #ffffff;
+}
+
+.section8 button {
+  width: 271px;
+  height: 98px;
+  background-color: #febb04;
+  color: #fff;
+  border-radius: 10px;
+  font-family: "Prompt", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  border: none;
+}
+
+.dashboard {
+  height: 100vh;
+  background-color: #1e1d23;
+  color: #fff;
+  padding: 20px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.dashboard-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.dashboard-item a:hover {
+  color: #febb04;
+}
+
+.dashboard-item img {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.dashboard-item a {
+  text-decoration: none;
+  color: #ffffff;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.profile-picture {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-details {
+  margin-right: 50px;
+}
+
+.user-name {
+  font-weight: bold;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin: 0;
+}
+
+.user-email {
+  color: #cccccc;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.bell-icon {
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+}
+
+.right-section2 {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  float: right;
+  position: relative;
+}
+
+.right-section2 h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.circle-image {
+  width: 265px;
+  height: 265px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.rectangle {
+  width: 150px;
+  height: 100px;
+  background-color: #333;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+/* Right Section Bottom */
+.T-section {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  background-color: #c2c0ff;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-family: Prompt;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 60px;
+  letter-spacing: 0em;
+  float: right;
+}
+
+/* BTC RIGHT SECTION MIDDLE */
+.btc-card {
+  width: 500px;
+  height: 380px;
+  border: 1px;
+}

@@ -80,7 +80,7 @@ const Login = () => {
                             </Grid>
                         </Grid>
                         <p className='text-end mt-2 mb-0 fw-semibold' > <a href='' className='text-decoration-none' style={{ color: "#FEBB04" }}>Forgot Password</a></p>
-                        <p className='text-start mt-1 fw-semibold' >Don't Have an Account ? <a href='' className='text-decoration-none' style={{ color: "#FEBB04" }}>Signup</a></p>
+                        <p className='text-start mt-1 fw-semibold' >Don't Have an Account ? <a href='./signup' className='text-decoration-none' style={{ color: "#FEBB04" }}>Signup</a></p>
 
                     </Box>
 

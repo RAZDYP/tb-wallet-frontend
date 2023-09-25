@@ -7,6 +7,9 @@ import Support from '../images/Support.png';
 import logoutIcon from '../images/logout.png';
 
 function SideMenu() {
+
+
+
     return (
         <>
             <div className='col-md-3 p-3 card' style={{ backgroundColor: "#1E1D23", height: "100vh", borderRadius: "0px 35px 35px 0px" }}>
@@ -17,27 +20,27 @@ function SideMenu() {
                 <div className='card-body mt-5 ps-5 ms-3 dashboard-side-menulist'>
                     <div className='d-flex align-items-center '>
                         <img src={DashboardIcon} width={25} className="me-4" alt="logo" />
-                        <a href='' className='m-0 dashboard-side-menu-text'>Dashboard</a>
+                        <a href='./dashboard' className='m-0 dashboard-side-menu-text'>Dashboard</a>
                     </div>
                     <div className='d-flex align-items-center '>
                         <img src={WithdrawIcon} width={25} className="me-4" alt="logo" />
-                        <a href='' className='m-0 dashboard-side-menu-text'>Withdraw</a>
+                        <a href='/send-coin-btc' className='m-0 dashboard-side-menu-text'>Withdraw</a>
                     </div>
                     <div className='d-flex align-items-center '>
                         <img src={BtcDeibtcardlogo} width={25} className="me-4" alt="logo" />
-                        <a href='' className='m-0 dashboard-side-menu-text'>Bitcoin Debit Card</a>
+                        <a href='/activate-card' className='m-0 dashboard-side-menu-text'>Bitcoin Debit Card</a>
                     </div>
                     <div className='d-flex align-items-center'>
                         <img src={Support} width={25} className="me-4" alt="logo" />
-                        <a href='' className='m-0 dashboard-side-menu-text'>Support</a>
+                        <a href='/dashboard-support' className='m-0 dashboard-side-menu-text'>Support</a>
                     </div>
                     <div className='d-flex align-items-center '>
                         <img src={Support} width={25} className="me-4" alt="logo" />
-                        <a href='' className='m-0 dashboard-side-menu-text'>Report</a>
+                        <a href='/dashboard-report' className='m-0 dashboard-side-menu-text'>Report</a>
                     </div>
                     <div className='d-flex align-items-center '>
                         <img src={Support} width={25} className="me-4" alt="logo" />
-                        <a href='' className='m-0 dashboard-side-menu-text'>Settings</a>
+                        <a href='/dashboard-settings' className='m-0 dashboard-side-menu-text'>Settings</a>
                     </div>
 
                 </div>

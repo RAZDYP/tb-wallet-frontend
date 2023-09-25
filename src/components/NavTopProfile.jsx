@@ -18,11 +18,9 @@ import ethIcon from '../images/ETH.png'
 function NavTopProfile(props) {
     return (
         <div className='w-100 d-flex justify-content-end pe-3'>
-            <div className='d-flex align-items-center'>
-                <img src={bellIcon} width={30} className="me-3" alt="logo" />
-                <img src={ProfileIcone} width={50} className="me-3" alt="logo" />
+            <div className=' align-items-center'>
                 <p className='fw-semibold m-0'>{props.user.firstName} {props.user.lastName} <br></br>
-                    <small className='opacity-50'>{props.user.email}</small></p>
+                </p> <small className='opacity-50'>{props.user.email}</small>
             </div>
         </div>
     )

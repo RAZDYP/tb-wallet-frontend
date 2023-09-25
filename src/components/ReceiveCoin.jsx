@@ -11,14 +11,14 @@ function ReceiveCoin(props) {
         <div className='col-md-9 p-3 font-style-verdana'>
             <NavTopProfile user={props.user} />
             <div className='w-100 mt-4'>
-                <h3 className='w-100 text-center fw-bold font-style-verdana'>Receive BTC</h3>
+                <h3 className='w-100 text-center fw-bold font-style-verdana'>Receive {props.cointypeList.name}</h3>
             </div>
             <div className='w-100 mt-4 d-flex align-items-center justify-content-center'>
                 <div className='card col-md-4 px-3 py-3 border-0 rounded-5' style={{ backgroundColor: "#C2C0FF1F" }}>
                     <div className='card-body w-100 px-3 py-2 d-flex flex-column align-items-center justify-content-center' >
                         <img src={Qrcode} className="" alt="logo" style={{}} />
                         <div className='text-center mt-2 w-100'>
-                            <p className='text-center m-0'>bc1q43s0xcy6gazquqfxgmuljafu8wwcyqcwjn2q50</p>
+                            <p className='text-center m-0'>{props.cointypeList.Address}</p>
                             <button className='m-0 p-0 bg-transparent border-0'>
                                 <FontAwesomeIcon icon={faCopy} />
                             </button>
@@ -30,7 +30,7 @@ function ReceiveCoin(props) {
             <div className='mt-3 w-100 d-flex align-items-center justify-content-center '>
                 <div className='col-md-4 d-flex align-items-center px-4 py-3 rounded-4 justify-content-between' style={{ backgroundColor: "#CECDFF" }}>
                     <FontAwesomeIcon icon={faCircleInfo} />
-                    <p className='m-0 small'>Send only Bitcoin (BTC) to this address.</p>
+                    <p className='m-0 '>Send only  {props.cointypeList.name} to this address.</p>
                 </div>
             </div>
             <div className='w-100 d-flex justify-content-end mt-5 pe-4'>

@@ -122,7 +122,7 @@ function SignUp() {
 
                             </Grid>
                         </Grid>
-                        <p className='text-start mt-2 fw-semibold' >Already Have an Account ? <a href='' className='text-decoration-none' style={{ color: "#FEBB04" }}>Login</a></p>
+                        <p className='text-start mt-2 fw-semibold' >Already Have an Account ? <a href='/login' className='text-decoration-none' style={{ color: "#FEBB04" }}>Login</a></p>
 
                     </Box>
 

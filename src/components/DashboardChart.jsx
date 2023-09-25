@@ -25,37 +25,43 @@ function DashboardChart(props) {
             <div className='w-100 d-flex align-items-center'>
                 <img src={CircleIcon} width={300} className="" alt="Circle icon" />
                 <img src={subtractIcon} width={500} className="dashboard-page-middle-right-icon" alt="subtract icon" />
+                <h4 className='dashboard-authors-name'>{props.user.firstName} {props.user.lastName}</h4>
             </div>
             <p className='fw-semibold px-4'>Coins</p>
             <div className='mt-2 px-4 w-100 d-flex align-items-end justify-content-between'>
-                <button className="m-0 p-0 border-0 bg-transparent col-md-4 rounded-4">
-                    <div className='card p-3 border-0 rounded-4 shadow w-100'>
-                        <div className='card-header border-0 bg-transparent d-flex justify-content-between align-items-center'>
-                            <div>
-                                <p className='m-0 small fw-semibold text-start opacity-50'>Bitcoin</p>
-                                <h5 className='fw-semibold'>$24000.50</h5>
+                <a href='/btc-chart' className='col-md-4'>
+                    <button className="m-0 p-0 border-0 bg-transparent col-md-12 rounded-4">
+                        <div className='card p-3 border-0 rounded-4 shadow w-100'>
+                            <div className='card-header border-0 bg-transparent d-flex justify-content-between align-items-center'>
+                                <div>
+                                    <p className='m-0 small fw-semibold text-start opacity-50'>Bitcoin</p>
+                                    <h5 className='fw-semibold'>$24000.50</h5>
+                                </div>
+                                <FontAwesomeIcon icon={faChartSimple} />
                             </div>
-                            <FontAwesomeIcon icon={faChartSimple} />
-                        </div>
-                        <div className='card-body py-0 px-3'>
-                            <img src={barchart} alt="subtract icon" />
-                        </div>
-                    </div>
-                </button>
-                <button className="m-0 p-0 border-0 bg-transparent col-md-4 rounded-4">
-                    <div className='card p-3 border-0 rounded-4 shadow w-100'>
-                        <div className='card-header border-0 bg-transparent d-flex justify-content-between align-items-center'>
-                            <div>
-                                <p className='m-0 small fw-semibold text-start opacity-50'>Ethereum</p>
-                                <h5 className='fw-semibold'>$1850.50</h5>
+                            <div className='card-body py-0 px-3'>
+                                <img src={barchart} alt="subtract icon" />
                             </div>
-                            <FontAwesomeIcon icon={faChartSimple} />
                         </div>
-                        <div className='card-body py-0 px-3'>
-                            <img src={BarchartRed} alt="subtract icon" />
+                    </button>
+                </a>
+                <a href='/eth-chart' className='col-md-4'>
+                    <button className="m-0 p-0 border-0 bg-transparent col-md-12 rounded-4">
+                        <div className='card p-3 border-0 rounded-4 shadow w-100'>
+                            <div className='card-header border-0 bg-transparent d-flex justify-content-between align-items-center'>
+                                <div>
+                                    <p className='m-0 small fw-semibold text-start opacity-50'>Ethereum</p>
+                                    <h5 className='fw-semibold'>$1850.50</h5>
+                                </div>
+                                <FontAwesomeIcon icon={faChartSimple} />
+                            </div>
+                            <div className='card-body py-0 px-3'>
+                                <img src={BarchartRed} alt="subtract icon" />
+                            </div>
                         </div>
-                    </div>
-                </button>
+                    </button>
+                </a>
+
                 <div className='col-md-2 d-flex align-items-center justify-content-start'>
                     <div className='p-4 text-center' style={{ backgroundColor: "#C2C0FF", borderRadius: "40px" }}>
                         <h3 className='fw-bold px-2 m-0'>T</h3>

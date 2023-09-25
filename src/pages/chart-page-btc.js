@@ -4,26 +4,24 @@ import { useState, useEffect } from 'react'
 import NavTopProfile from '../components/NavTopProfile'
 
 
-function ChartPage() {
+function BtcChartPage() {
 
     const [user, setUser] = useState({});
-
     useEffect(() => {
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
+
         const getUser = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/users/find`, {
-                method: 'POST',
+            const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${email}`, {
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email })
             })
 
             const result = await response.json()
             console.log(result)
             setUser(result.user)
-
         }
 
         getUser()
@@ -54,7 +52,7 @@ function ChartPage() {
         <>
             <div className=' col-md-12 d-flex'>
                 <SideMenu />
-                <div style={{ height: "100vh", overflow: "scroll" }} className='col-md-9 font-style-verdana'>
+                <div style={{ height: "100vh", overflow: "scroll" }} className='col-md-9 font-style-verdana p-2'>
                     <NavTopProfile user={user} />
                     <div className='w-100 mt-5'>
                         <h3 className='w-100 text-center fw-bold font-style-verdana'>Bitcoin/USD</h3>
@@ -73,8 +71,13 @@ function ChartPage() {
                         </div>
                     </div>
                     <div className='w-100 px-5 d-flex align-items-center justify-content-center mt-4'>
-                        <button className='rounded-3 border-0 text-white col-md-2 me-3 p-2' style={{ backgroundColor: "#F80F0F" }}><small>SEND</small></button>
-                        <button className='rounded-3 border-0 text-white col-md-2 ms-3 p-2' style={{ backgroundColor: "#53D39D" }}><small>RECEIVE</small></button>
+                        <a href='/send-coin-btc' className='w-25'>
+                            <button className='rounded-3 border-0 text-white col-md-12 me-3 p-2' style={{ backgroundColor: "#F80F0F" }}><small>SEND</small></button>
+                        </a>
+                        <a href='/receive-coin-btc' className='w-25'>
+                            <button className='rounded-3 border-0 text-white col-md-12 ms-3 p-2' style={{ backgroundColor: "#53D39D" }}><small>RECEIVE</small></button>
+
+                        </a>
 
                     </div>
 
@@ -88,4 +91,4 @@ function ChartPage() {
         </>
     )
 }
-export default ChartPage
+export default BtcChartPage
