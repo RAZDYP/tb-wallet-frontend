@@ -34,6 +34,7 @@ import DashboardSettingsPage from './pages/dashboard-settings-page';
 import Home from './pages/home';
 import Logout from './pages/logout';
 import SideMenu from './components/SideMenu';
+import CardControlType from './components/CardControlType';
 
 
 
@@ -80,6 +81,7 @@ function App() {
 
         <Route path='/balance-control' element={<BalanceControl />}></Route>
         <Route path='/card-control' element={<CardControl />}></Route>
+        <Route path='/card-control/cards' element={<CardControlType />}></Route>
 
         <Route path='/admin-support' element={< AdminSupportPage />}></Route>
         <Route path='/admin-report' element={< AdminReportPage />}></Route>

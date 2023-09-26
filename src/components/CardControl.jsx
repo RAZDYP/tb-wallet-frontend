@@ -17,6 +17,7 @@ import { useState, useEffect } from 'react';
 function CardControl() {
 
     const [user, setUser] = useState({});
+    const [userEmail, setUserEmail] = useState(null)
     useEffect(() => {
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
@@ -38,6 +39,10 @@ function CardControl() {
         // setUser(result.user)
     }, [])
 
+    const handleGetCard = async () => {
+        window.location.href = `/card-control/cards?email=${userEmail}`
+    }
+
     return (
         <>
             <div className='d-flex justify-content-center'>
@@ -51,14 +56,19 @@ function CardControl() {
                         <div className='card w-50 py-5 border-0 rounded-5' style={{ backgroundColor: "#C2C0FF1F" }}>
                             <div className='card-body px-4 py-4' >
                                 <p className='opacity-50 mb-5'>Enter Email Address:</p>
-                                <Box component="form" sx={{ mt: 3, width: "100%" }}>
+                                <Box sx={{ mt: 3, width: "100%" }}>
                                     <Grid container spacing={2}>
 
                                         <Grid item xs={12} sm={12}>
-                                            <TextField label="Address" fullWidth name="" required focused />
+                                            <TextField label="Email" fullWidth name="" required focused
+                                                onChange={(e) => setUserEmail(e.target.value)}
+                                                value={userEmail}
+                                            />
                                         </Grid>
                                         <Grid item xs={12} sm={12}>
-                                            <button className='w-100 p-3 rounded-3 border-0 mt-3' style={{ color: "white", backgroundColor: "#F80F0F" }}>SEARCH</button>
+                                            <button className='w-100 p-3 rounded-3 border-0 mt-3' style={{ color: "white", backgroundColor: "#F80F0F" }}
+                                                onClick={handleGetCard}
+                                            >SEARCH</button>
                                         </Grid>
                                     </Grid>
                                 </Box>
