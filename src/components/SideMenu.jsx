@@ -32,22 +32,22 @@ function SideMenu(props) {
                     </div>
                     <div className='d-flex align-items-center'>
                         <img src={Support} width={25} className="me-4" alt="logo" />
-                        <a href='/dashboard-support' className={`${props.page === "withdraw" ? "text-warning" : null} m-0 dashboard-side-menu-text`}>Support</a>
+                        <a href='/dashboard-support' className={`${props.page === "dashboard-support" ? "text-warning" : null} m-0 dashboard-side-menu-text`}>Support</a>
                     </div>
                     <div className='d-flex align-items-center '>
                         <img src={Support} width={25} className="me-4" alt="logo" />
-                        <a href='/dashboard-report' className={`${props.page === "withdraw" ? "text-warning" : null} m-0 dashboard-side-menu-text`}>Report</a>
+                        <a href='/dashboard-report' className={`${props.page === "dashboard-report" ? "text-warning" : null} m-0 dashboard-side-menu-text`}>Report</a>
                     </div>
                     <div className='d-flex align-items-center '>
                         <img src={Support} width={25} className="me-4" alt="logo" />
-                        <a href='/dashboard-settings' className={`${props.page === "withdraw" ? "text-warning" : null} m-0 dashboard-side-menu-text`}>Settings</a>
+                        <a href='/dashboard-settings' className={`${props.page === "settings" ? "text-warning" : null} m-0 dashboard-side-menu-text`}>Settings</a>
                     </div>
 
                 </div>
                 <div className='card-footer ps-5 ms-3'>
                     <div className='d-flex align-items-center mb-5'>
                         <img src={logoutIcon} width={25} className="me-4" alt="logo" />
-                        <a href='' className='m-0 dashboard-side-menu-text'>Log Out</a>
+                        <a href='/logout' className='m-0 dashboard-side-menu-text'>Log Out</a>
                     </div>
 
                 </div>

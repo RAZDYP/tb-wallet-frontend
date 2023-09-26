@@ -65,7 +65,7 @@ function BalanceControl() {
     return (
         <>
             <div className="d-flex justify-content-center">
-                <AdminSidePaNel />
+                <AdminSidePaNel page={"balance-control"} />
                 <div
                     className="col-md-9 p-3 font-style-verdana"
                     style={{ overflowY: "scroll", height: "100vh" }}

@@ -14,6 +14,7 @@ import ActivateCard from './ActivateCard';
 import { useState, useEffect } from 'react';
 import AdminSidePaNel from './AdminSidePanel';
 import { useSearchParams } from 'react-router-dom';
+import SideMenu from './SideMenu';
 
 
 const countries = [
@@ -244,7 +245,7 @@ function ActivateCardPayment() {
     return (
         <>
             <div className='col-md-12 d-flex'>
-                <AdminSidePaNel />
+                <SideMenu page={"bitcoin-debit-card"} />
 
                 <div className='col-md-9 p-3 font-style-verdana'>
                     <NavTopProfile user={user} />

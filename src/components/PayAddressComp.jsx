@@ -10,6 +10,7 @@ import BitcoinAcceptedIcon from '../images/BitcoinAccepted.png';
 import ActivateCardIcon from '../images/activate-card.png';
 import MoneyGuarenteeIcon from '../images/moneyGuarentee.png';
 import { useState, useEffect } from 'react';
+import SideMenu from './SideMenu';
 
 function PayAddressComp() {
     const [user, setUser] = useState({});
@@ -36,7 +37,7 @@ function PayAddressComp() {
 
     return (
         <div className='d-flex justify-content-between'>
-            <AdminSidePaNel />
+            <SideMenu page={"bitcoin-debit-card"} />
             <div className='col-md-9 p-3 font-style-verdana' style={{ overflow: "scroll", height: "100vh" }}>
                 <NavTopProfile user={user} />
                 <div className='w-100 mt-4 d-flex flex-column align-items-center'>

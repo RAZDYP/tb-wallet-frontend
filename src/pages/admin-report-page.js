@@ -44,7 +44,7 @@ function AdminReportPage() {
     return (
         <>
             <div className='d-flex'>
-                <AdminSidePaNel />
+                <AdminSidePaNel page={"admin-report"} />
 
                 <div className='col-md-9 p-3 font-style-verdana'>
                     <NavTopProfile user={user} />

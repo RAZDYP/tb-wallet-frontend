@@ -50,7 +50,7 @@ function UserDetails() {
     return (
         <>
             <div className='d-flex justify-content-center'>
-                <AdminSidePaNel />
+                <AdminSidePaNel page={"user-details"} />
                 <div className='col-md-9 p-3 font-style-verdana' style={{ overflowY: "scroll", height: "100vh" }}>
                     <NavTopProfile user={user} />
                     <div className='w-100 mt-5'>

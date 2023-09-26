@@ -44,7 +44,7 @@ function ReceiveCoinEth() {
     return (
         <>
             <div className=' col-md-12 d-flex'>
-                <SideMenu />
+                <SideMenu page={"withdraw"} />
                 <ReceiveCoin user={user} cointypeList={cointypeList[1]} />
             </div>
         </>

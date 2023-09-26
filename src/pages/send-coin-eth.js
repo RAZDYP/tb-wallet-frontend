@@ -67,7 +67,7 @@ function SendCoinEth() {
 
     return (
         <div className='col-md-12 d-flex'>
-            <SideMenu />
+            <SideMenu page={"withdraw"} />
             <SendCoin user={user} handleSendCoin={handleSendCoin} cointypeList={cointypeList[1]} />
         </div>
     )

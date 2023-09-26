@@ -39,7 +39,7 @@ function AdminUpdateQR() {
     return (
         <>
             <div className='d-flex justify-content-between'>
-                <AdminSidePaNel />
+                <AdminSidePaNel page={"admin-update-qr"} />
 
                 <div className='col-md-9 p-3 font-style-verdana' style={{ overflowY: "scroll", height: "100vh" }}>
                     <NavTopProfile user={user} />

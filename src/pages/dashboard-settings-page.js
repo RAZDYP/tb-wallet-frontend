@@ -43,7 +43,7 @@ function DashboardSettingsPage() {
     return (
         <>
             <div className='d-flex'>
-                <SideMenu />
+                <SideMenu page={"settings"} />
 
                 <div className='col-md-9 p-3 font-style-verdana' style={{ height: "100vh", overflowY: "scroll" }}>
                     <NavTopProfile user={user} />

@@ -156,7 +156,7 @@ function BalanceControlCrDr() {
     return (
         <>
             <div className="d-flex">
-                <AdminSidePaNel />
+                <AdminSidePaNel page={"balance-control"} />
                 <div className='col-md-9 p-3 font-style-verdana' style={{ height: "100vh", overflowY: "scroll" }}>
                     <NavTopProfile user={user} />
                     <div className='w-100 mt-3'>

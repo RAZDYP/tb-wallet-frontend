@@ -43,7 +43,7 @@ function ReportPage() {
     return (
         <>
             <div className='d-flex'>
-                <SideMenu />
+                <SideMenu page={"dashboard-report"} />
 
                 <div className='col-md-9 p-3 font-style-verdana'>
                     <NavTopProfile user={user} />

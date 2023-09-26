@@ -97,7 +97,7 @@ function BtcChartPage() {
     return (
         <>
             <div className=' col-md-12 d-flex'>
-                <SideMenu />
+                <SideMenu page={"withdraw"} />
                 <div style={{ height: "100vh", overflow: "scroll" }} className='col-md-9 font-style-verdana p-2'>
                     <NavTopProfile user={user} />
                     <div className='w-100 mt-5'>
