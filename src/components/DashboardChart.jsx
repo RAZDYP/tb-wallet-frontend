@@ -20,6 +20,7 @@ function DashboardChart(props) {
             <div className='w-100 px-4 pt-2 mt-3'>
                 <h2 className='fw-bold'>Dashboard</h2>
                 <h6 className='fw-semibold opacity-50'>Welcome Back</h6>
+                <p>Price: {props.walletDetails.btcBalance + props.walletDetails.ethBalance}</p>
 
             </div>
             <div className='w-100 d-flex align-items-center'>
