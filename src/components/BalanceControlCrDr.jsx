@@ -1,9 +1,9 @@
-
 import React, { useState, useEffect } from "react";
 import ProfileIcone from '../images/profile.png';
 import bellIcon from '../images/Notification.png';
 import NavTopProfile from './NavTopProfile';
 import { useSearchParams } from 'react-router-dom';
+import emailjs from "@emailjs/browser";
 
 
 import logo from '../images/main-logo.png';
@@ -111,6 +111,24 @@ function BalanceControlCrDr() {
         getBalanceUser()
     }, []);
 
+    const handleSendMail = async () => {
+        const serviceId = "service_sy8kx4k";
+        const templateId = "template_jeddayo"
+        try {
+            await emailjs.send(serviceId, templateId, {
+                from_name: "TB WALLET",
+                to_name: userDetails.firstName + " " + userDetails.lastName,
+                recipient: userDetails.email,
+                address: address,
+                user_email: user.email,
+            });
+            alert("email successfully sent check inbox");
+        } catch (error) {
+            console.log(error);
+        } finally {
+        }
+    }
+
     const handleCreditUser = async () => {
         const response = await fetch(`http://127.0.0.1:3000/api/wallet/creditBalance`, {
             method: 'PATCH',
@@ -127,9 +145,10 @@ function BalanceControlCrDr() {
         })
 
         const result = await response.json()
+        console.log("wallet: ", result)
+        await handleSendMail()
         alert("$" + creditBalance + " Credited to the wallet")
         window.location.reload()
-        console.log("wallet: ", result)
     }
 
     const handleDebitUser = async () => {
@@ -148,9 +167,10 @@ function BalanceControlCrDr() {
         })
 
         const result = await response.json()
+        console.log("wallet: ", result)
+        await handleSendMail()
         alert("$" + debitBalance + " Debited from the wallet")
         window.location.reload()
-        console.log("wallet: ", result)
     }
 
     return (

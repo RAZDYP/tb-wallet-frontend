@@ -12,6 +12,7 @@ import subtractIcon from '../images/Subtract.png';
 import barchart from '../images/bar-chart.png';
 import BarchartRed from '../images/BarChartRed.png';
 import NavTopProfile from './NavTopProfile';
+import BalanceIcon from '../images/balance-icon.svg';
 
 function DashboardChart(props) {
     return (
@@ -20,11 +21,16 @@ function DashboardChart(props) {
             <div className='w-100 px-4 pt-2 mt-3'>
                 <h2 className='fw-bold'>Dashboard</h2>
                 <h6 className='fw-semibold opacity-50'>Welcome Back</h6>
-                <p>Price: {props.walletDetails.btcBalance + props.walletDetails.ethBalance}</p>
 
             </div>
             <div className='w-100 d-flex align-items-center'>
-                <img src={CircleIcon} width={300} className="" alt="Circle icon" />
+                <img src={BalanceIcon} width={300} className="" alt="Circle icon" />
+                <div className='dashboard-available-balance text-center'>
+                    <h5 className='fw-semibold mb-1'>$ {props.walletDetails.btcBalance + props.walletDetails.ethBalance}</h5>
+                    <p className='small opacity-75'>Available Balance</p>
+
+                </div>
+
                 <img src={subtractIcon} width={500} className="dashboard-page-middle-right-icon" alt="subtract icon" />
                 <h4 className='dashboard-authors-name'>{props.user.firstName} {props.user.lastName}</h4>
             </div>

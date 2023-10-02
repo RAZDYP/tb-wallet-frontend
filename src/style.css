@@ -29,6 +29,10 @@
   opacity: 0.5;
   text-transform: uppercase;
 }
+.dashboard-available-balance {
+  position: absolute;
+  left: 480px;
+}
 
 /* DASHBOARD CSS */
 
