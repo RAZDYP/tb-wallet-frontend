@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import ProfileIcone from '../images/profile.png';
 import bellIcon from '../images/Notification.png';
 import Qrcode from '../images/qr-code.png';
@@ -16,7 +16,7 @@ function ReceiveCoin(props) {
         const email = localStorage.getItem('email')
 
         const getUser = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${email}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users/find?email=${email}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

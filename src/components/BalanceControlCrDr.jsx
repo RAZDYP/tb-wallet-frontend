@@ -21,7 +21,7 @@ function BalanceControlCrDr() {
         const email = localStorage.getItem('email')
 
         const getUser = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${email}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users/find?email=${email}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -58,7 +58,7 @@ function BalanceControlCrDr() {
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
         const getUser = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${email}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users/find?email=${email}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ function BalanceControlCrDr() {
         getUser()
 
         const handleFindWallet = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/wallet/findBy${addressType.toLocaleUpperCase()}?${addressType}Address=${address}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/wallet/findBy${addressType.toLocaleUpperCase()}?${addressType}Address=${address}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -96,7 +96,7 @@ function BalanceControlCrDr() {
         handleFindWallet()
 
         const getBalanceUser = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/wallet/findUserByWallet?${addressType}Address=${address}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/wallet/findUserByWallet?${addressType}Address=${address}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -130,7 +130,7 @@ function BalanceControlCrDr() {
     }
 
     const handleCreditUser = async () => {
-        const response = await fetch(`http://127.0.0.1:3000/api/wallet/creditBalance`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/wallet/creditBalance`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -152,7 +152,7 @@ function BalanceControlCrDr() {
     }
 
     const handleDebitUser = async () => {
-        const response = await fetch(`http://127.0.0.1:3000/api/wallet/debitBalance`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/wallet/debitBalance`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

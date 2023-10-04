@@ -18,7 +18,7 @@ function CardListPage() {
         const email = localStorage.getItem('email')
 
         const getUser = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${email}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users/find?email=${email}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -82,7 +82,7 @@ function CardListPage() {
     }
 
     const handleCardUpdate = async () => {
-        const response = await fetch(`http://127.0.0.1:3000/api/card/updateCard`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/card/updateCard`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

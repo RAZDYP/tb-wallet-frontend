@@ -29,7 +29,7 @@ function CardControlType() {
         const userEmail = searchParams.get('email')
 
         const getUser = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${email}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users/find?email=${email}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ function CardControlType() {
         getUser()
 
         const handleGetCard = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/card/findByEmail?email=${userEmail}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/card/findByEmail?email=${userEmail}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ function CardControlType() {
     }, [])
 
     const handleActivateCard = async (cardType) => {
-        const response = await fetch(`http://127.0.0.1:3000/api/card/updateCard`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/card/updateCard`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -80,7 +80,7 @@ function CardControlType() {
     }
 
     const handleInactivateCard = async (cardType) => {
-        const response = await fetch(`http://127.0.0.1:3000/api/card/updateCard/inactive`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/card/updateCard/inactive`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

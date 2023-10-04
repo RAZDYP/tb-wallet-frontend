@@ -20,7 +20,7 @@ function BalanceControl() {
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
         const getUser = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${email}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users/find?email=${email}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ function BalanceControl() {
         const coinType = await handleCoinType(walletAddress);
         console.log(coinType.toLowerCase());
 
-        const response = await fetch(`http://127.0.0.1:3000/api/wallet/findBy${coinType}?${coinType.toLowerCase()}Address=${walletAddress}`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/wallet/findBy${coinType}?${coinType.toLowerCase()}Address=${walletAddress}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

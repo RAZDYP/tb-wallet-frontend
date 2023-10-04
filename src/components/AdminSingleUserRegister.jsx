@@ -21,7 +21,7 @@ function AdminSingleUserRegister(props) {
         const email = localStorage.getItem('email')
 
         const getUser = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${email}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users/find?email=${email}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ function AdminSingleUserRegister(props) {
             password,
         }
 
-        const response = await fetch('http://127.0.0.1:3000/api/users/admin/register', {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users/admin/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

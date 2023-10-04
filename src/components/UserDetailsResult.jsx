@@ -26,7 +26,7 @@ function UserDetailResults() {
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
         const getUser = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${email}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users/find?email=${email}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -41,7 +41,7 @@ function UserDetailResults() {
         getUser()
 
         const getUserDetails = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${userEmail}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users/find?email=${userEmail}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -56,7 +56,7 @@ function UserDetailResults() {
         getUserDetails()
 
         const getWalletDetails = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/wallet/find?email=${userEmail}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/wallet/find?email=${userEmail}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

@@ -25,7 +25,7 @@ const Login = () => {
             password
         }
 
-        const response = await fetch('http://127.0.0.1:3000/api/users/login', {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -44,6 +44,8 @@ const Login = () => {
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     }
+
+    console.log(process.env.REACT_APP_BASE_URL)
 
     return (
         <>

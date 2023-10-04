@@ -25,7 +25,7 @@ function Dashboard() {
         const email = localStorage.getItem('email')
 
         const getUser = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${email}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users/find?email=${email}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -68,7 +68,7 @@ function Dashboard() {
         }
 
         const getWalletDetails = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/wallet/find?email=${email}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/wallet/find?email=${email}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -92,10 +92,10 @@ function Dashboard() {
         <>
             <div className=' col-md-12 d-flex'>
                 <SideMenu page={"dashboard"} />
-                <DashboardChart 
-                    user={user} 
-                    currentRateBtc={currentRateBtc} 
-                    currentRateEth={currentRateEth} 
+                <DashboardChart
+                    user={user}
+                    currentRateBtc={currentRateBtc}
+                    currentRateEth={currentRateEth}
                     walletDetails={walletDetails}
                 />
             </div>

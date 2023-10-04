@@ -19,7 +19,7 @@ function ResetPassword() {
             newPassword: resetPassword
         }
 
-        const response = await fetch('http://127.0.0.1:3000/api/users/updatePassword', {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users/updatePassword`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

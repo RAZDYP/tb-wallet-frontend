@@ -19,7 +19,7 @@ function EthChartPage() {
         const email = localStorage.getItem('email')
 
         const getUser = async () => {
-            const response = await fetch(`http://127.0.0.1:3000/api/users/find?email=${email}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users/find?email=${email}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ function EthChartPage() {
     const [amount, setAmount] = useState('')
 
     const handleSendBitcoin = async () => {
-        const response = await fetch(`http://127.0.0.1:3000/api/wallet/debitBalance`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/wallet/debitBalance`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
