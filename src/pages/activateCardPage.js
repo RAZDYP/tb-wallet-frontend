@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import SideMenu from '../components/SideMenu';
 import ActivateCard from '../components/ActivateCard';
+import classicCardIcon from '../images/classic-card.png';
+import silverCardIcon from '../images/silver.png';
+import goldCardIcon from '../images/gold.png';
+import platinumCardIcon from '../images/platinum.png';
+import merchantCardIcon from '../images/merchant.png';
+import inactiveCardIcon from '../images/inactive-card.png';
 
 function ActivateCardPage() {
 
     const [user, setUser] = useState({});
+    const [card, setCard] = useState({});
+    const [cardType, setCardType] = useState(null);
+    const [cardStatus, setCardStatus] = useState(null);
+    const [cardSrc, setCardSrc] = useState(null);
+
     useEffect(() => {
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
@@ -23,6 +34,25 @@ function ActivateCardPage() {
         }
 
         getUser()
+
+        const getCard = async () => {
+            const response = await fetch(`http://127.0.0.1:3000/api/card/findByEmail?email=${email}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+
+            const result = await response.json()
+            console.log(result)
+            setCard(result)
+            setCardType(result.cardType)
+            setCardStatus(result.cardStatus)
+            const cardType = result.cardType
+            setCardSrc(result.cardStatus === "INACTIVE" ? inactiveCardIcon : cardType === "INACTIVE" ? inactiveCardIcon : cardType === "CLASSIC" ? classicCardIcon : cardType === "SILVER" ? silverCardIcon : cardType === "GOLD" ? goldCardIcon : cardType === "PLATINUM" ? platinumCardIcon : merchantCardIcon)
+        }
+
+        getCard()
         // setUser(result.user)
     }, [])
 
@@ -31,7 +61,11 @@ function ActivateCardPage() {
         <>
             <div className=' col-md-12 d-flex'>
                 <SideMenu page={"bitcoin-debit-card"} />
-                <ActivateCard user={user} />
+                <ActivateCard
+                    user={user}
+                    cardSrc={cardSrc}
+                    cardStatus={cardStatus}
+                />
             </div>
         </>
     )

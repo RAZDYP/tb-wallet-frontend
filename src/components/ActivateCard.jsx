@@ -11,11 +11,15 @@ import CircleIcon from '../images/circle-abstract.png';
 import subtractIcon from '../images/Subtract.png';
 import barchart from '../images/bar-chart.png';
 import BarchartRed from '../images/BarChartRed.png';
-import ActivateCardIcon from '../images/activate-card.png';
+import inactiveCardIcon from '../images/activate-card.png';
 import BsvIcon from '../images/BSV.png';
 import ethIcon from '../images/ETH.png'
 import NavTopProfile from './NavTopProfile';
 import classicCardIcon from '../images/classic-card.png';
+import silverCardIcon from '../images/silver.png';
+import goldCardIcon from '../images/gold.png';
+import platinumCardIcon from '../images/platinum.png';
+import merchantCardIcon from '../images/merchant.png';
 
 
 function ActivateCard(props) {
@@ -24,12 +28,14 @@ function ActivateCard(props) {
             <NavTopProfile user={props.user} />
             <div className='w-100 px-4 pt-2 mt-3'>
                 <h2 className='fw-bold m-0'>Your Card</h2>
+                <p className={`${props.cardStatus === "INACTIVE" ? "text-danger" : "text-success"} mx-4 fw-bold my-2 dashboard-side-menu-text`}>{props.cardStatus}</p>
+
             </div>
             <div className='w-100 d-flex align-items-center justify-content-center'>
                 <div className='d-flex align-items-center'>
-                    <img src={ActivateCardIcon} width={500} alt="subtract icon" />
+                    <img src={props.cardSrc} width={400} alt="subtract icon" className='mx-4 my-2' />
                     {/* <img src={classicCardIcon} width={400} alt="subtract icon" className='m-4' /> */}
-                    <a href='/activate-card/card-list' className='m-0 p-0 border-0 bg-transparent opacity-50 pt-5'><h3 className='fw-semibold'>Activate Card <FontAwesomeIcon icon={faChevronRight} /></h3></a>
+                    <a href='/activate-card/card-list' className='m-0 p-0 border-0 bg-transparent opacity-50 pt-5'><h3 className='fw-semibold'>{props.cardStatus === "INACTIVE" ? "Activate Card" : "Upgrade Card"} <FontAwesomeIcon icon={faChevronRight} /></h3></a>
                 </div>
 
             </div>
