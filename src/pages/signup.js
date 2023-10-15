@@ -117,7 +117,7 @@ function SignUp() {
                                 />
                             </Grid>
                             <Grid item xs={12} sm={12}>
-                                <TextField label="Referral Code (if any)" fullWidth name="" focused className='mt-3' value={referralCode}
+                                <TextField label="Referral Code (if any)" fullWidth name="" required="false" focused className='mt-3' value={referralCode}
                                     onChange={(e) => {
                                         setReferralCode(e.target.value)
                                     }}

@@ -60,7 +60,7 @@ function ActivateCardPage() {
     return (
         <>
             <div className=' col-md-12 d-flex'>
-                <SideMenu page={"bitcoin-debit-card"} />
+                <SideMenu page={"withdraw"} />
                 <ActivateCard
                     user={user}
                     cardSrc={cardSrc}

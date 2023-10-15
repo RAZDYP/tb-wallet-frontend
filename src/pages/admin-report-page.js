@@ -20,6 +20,7 @@ import AdminSidePaNel from '../components/AdminSidePanel';
 function AdminReportPage() {
 
     const [user, setUser] = useState({});
+    const [reports, setReports] = useState([])
     useEffect(() => {
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
@@ -38,6 +39,22 @@ function AdminReportPage() {
         }
 
         getUser()
+
+        const getSupportRequest = async () => {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/request/findReport`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+
+            const result = await response.json()
+            console.log(result)
+            setReports(result)
+            // setUser(result.user)
+        }
+
+        getSupportRequest()
         // setUser(result.user)
     }, [])
 
@@ -49,37 +66,23 @@ function AdminReportPage() {
                 <div className='col-md-9 p-3 font-style-verdana'>
                     <NavTopProfile user={user} />
                     <div className='w-100 mt-3'>
-                        <h3 className='w-100 text-center fw-bold font-style-verdana'>Submit a report</h3>
+                        <h3 className='w-100 text-center fw-bold font-style-verdana'>Report Received</h3>
                     </div>
                     <div className='w-100 mt-3 d-flex align-items-center justify-content-center'>
-                        <div className='card w-75 py-3 border-0 rounded-5' style={{ backgroundColor: "#C2C0FF1F" }}>
-                            <div className='card-body px-4 py-3' >
-                                <Box component="form" sx={{ mt: 2, width: "100%" }}>
-                                    <Grid container spacing={2}>
-                                        <Grid item xs={12} sm={12}>
-                                            <TextField label="Subject" fullWidth name="" required focused />
-                                        </Grid>
+                        <div className='card w-75 p-4 border-0 rounded-5' style={{ backgroundColor: "#C2C0FF1F", height: "80vh", overflowY: "scroll" }}>
+                            {
+                                reports.map((report, index) => (
+                                    <div className='card rounded-3 mb-3 border-0'>
+                                        <div className='card-body'>
+                                            <p>Subject : {report.subject}</p>
+                                            <p>Email : {report.email}</p>
+                                            <p>Description : {report.description}</p>
+                                            <p>Attachements(if any)</p>
+                                        </div>
 
-                                        <Grid item xs={12} sm={12}>
-                                            <TextField label="Your Email Address" fullWidth name="" required focused />
-                                        </Grid>
-
-                                        <Grid item xs={12} sm={12}>
-                                            <TextField label="Desciption" fullWidth name="" required focused />
-                                        </Grid>
-                                        <Grid item xs={12} sm={12}>
-                                            <TextField label="Attachment" style={{ display: "none" }} fullWidth name="" required focused type='file' id='attachment' />
-                                            <label for="attachment" className='w-100 text-center mt-2 bg-secondary opacity-75  border rounded-3 text-white p-3' >Upload File</label>
-                                        </Grid>
-
-
-                                        <Grid item xs={12} sm={12}>
-                                            <button className='w-100 p-2 rounded-3 border-0 mt-2' style={{ color: "white", backgroundColor: "#F80F0F" }}>SUBMIT</button>
-                                        </Grid>
-
-                                    </Grid>
-                                </Box>
-                            </div>
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
 

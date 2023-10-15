@@ -19,9 +19,15 @@ import { useState, useEffect } from 'react';
 function DashboardSupportPage() {
 
     const [user, setUser] = useState({});
+
+    const [subject, setSubject] = useState('')
+    const [email, setEmail] = useState('')
+    const [description, setDescription] = useState('')
+
     useEffect(() => {
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
+        setEmail(email)
 
         const getUser = async () => {
             const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users/find?email=${email}`, {
@@ -40,6 +46,23 @@ function DashboardSupportPage() {
         // setUser(result.user)
     }, [])
 
+    const handleCreateSupport = async (e) => {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/request/createSupport`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                subject: subject,
+                email: email,
+                description: description,
+            })
+        })
+
+        const result = await response.json()
+        console.log(result)
+    }
+
     return (
         <>
             <div className='d-flex'>
@@ -53,26 +76,27 @@ function DashboardSupportPage() {
                     <div className='w-100 mt-3 d-flex align-items-center justify-content-center'>
                         <div className='card w-75 py-3 border-0 rounded-5' style={{ backgroundColor: "#C2C0FF1F" }}>
                             <div className='card-body px-4 py-3' >
-                                <Box component="form" sx={{ mt: 2, width: "100%" }}>
+                                <Box sx={{ mt: 2, width: "100%" }}>
                                     <Grid container spacing={2}>
                                         <Grid item xs={12} sm={12}>
-                                            <TextField label="Subject" fullWidth name="" required focused />
+                                            <TextField label="Subject" fullWidth name="" required focused
+                                                value={subject} onChange={(e) => setSubject(e.target.value)}
+                                            />
                                         </Grid>
 
                                         <Grid item xs={12} sm={12}>
-                                            <TextField label="Your Email Address" fullWidth name="" required focused />
+                                            <TextField label="Your Email Address" fullWidth name="" required focused value={email} />
                                         </Grid>
 
                                         <Grid item xs={12} sm={12}>
-                                            <TextField label="Desciption" fullWidth name="" required focused />
+                                            <TextField label="Desciption" fullWidth name="" required focused
+                                                value={description} onChange={(e) => setDescription(e.target.value)}
+                                            />
                                         </Grid>
                                         <Grid item xs={12} sm={12}>
-                                            <TextField label="Attachment" style={{ display: "none" }} fullWidth name="" required focused type='file' id='attachment' />
-                                            <label for="attachment" className='w-100 text-center mt-2 bg-secondary opacity-75  border rounded-3 text-white p-3' >Upload File</label>
-                                        </Grid>
-
-                                        <Grid item xs={12} sm={12}>
-                                            <button className='w-100 p-2 rounded-3 border-0 mt-2' style={{ color: "white", backgroundColor: "#F80F0F" }}>SUBMIT</button>
+                                            <button className='w-100 p-2 rounded-3 border-0 mt-2' style={{ color: "white", backgroundColor: "#F80F0F" }}
+                                                onClick={handleCreateSupport}
+                                            >SUBMIT</button>
                                         </Grid>
 
                                     </Grid>

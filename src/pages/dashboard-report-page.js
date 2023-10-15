@@ -19,6 +19,11 @@ import { useState, useEffect } from 'react';
 function ReportPage() {
 
     const [user, setUser] = useState({});
+
+    const [subject, setSubject] = useState('')
+    const [email, setEmail] = useState('')
+    const [description, setDescription] = useState('')
+
     useEffect(() => {
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
@@ -32,13 +37,36 @@ function ReportPage() {
             })
 
             const result = await response.json()
-            console.log(result)
+            // console.log(result)
             setUser(result.user)
         }
 
         getUser()
         // setUser(result.user)
     }, [])
+
+    const handleCreateReport = async (e) => {
+        e.preventDefault()
+        console.log(subject, email, description)
+        const data = {
+            subject,
+            email,
+            description
+        }
+
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/request/createReport`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+
+        const result = await response.json()
+        console.log(result)
+        alert(result.requestType)
+
+    }
 
     return (
         <>
@@ -56,24 +84,24 @@ function ReportPage() {
                                 <Box component="form" sx={{ mt: 2, width: "100%" }}>
                                     <Grid container spacing={2}>
                                         <Grid item xs={12} sm={12}>
-                                            <TextField label="Subject" fullWidth name="" required focused />
+                                            <TextField label="Subject" fullWidth name="" required focused
+                                                value={subject} onChange={(e) => setSubject(e.target.value)}
+                                            />
                                         </Grid>
 
                                         <Grid item xs={12} sm={12}>
-                                            <TextField label="Your Email Address" fullWidth name="" required focused />
+                                            <TextField label="Your Email Address" value={email} onChange={(e) => setEmail(e.target.value)} fullWidth name="" required focused />
                                         </Grid>
 
                                         <Grid item xs={12} sm={12}>
-                                            <TextField label="Desciption" fullWidth name="" required focused />
+                                            <TextField label="Desciption" fullWidth name="" required focused
+                                                value={description} onChange={(e) => setDescription(e.target.value)}
+                                            />
                                         </Grid>
                                         <Grid item xs={12} sm={12}>
-                                            <TextField label="Attachment" style={{ display: "none" }} fullWidth name="" required focused type='file' id='attachment' />
-                                            <label for="attachment" className='w-100 text-center mt-2 bg-secondary opacity-75  border rounded-3 text-white p-3' >Upload File</label>
-                                        </Grid>
-
-
-                                        <Grid item xs={12} sm={12}>
-                                            <button className='w-100 p-2 rounded-3 border-0 mt-2' style={{ color: "white", backgroundColor: "#F80F0F" }}>SUBMIT</button>
+                                            <button className='w-100 p-2 rounded-3 border-0 mt-2' style={{ color: "white", backgroundColor: "#F80F0F" }}
+                                                onClick={handleCreateReport}
+                                            >SUBMIT</button>
                                         </Grid>
 
                                     </Grid>

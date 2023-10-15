@@ -100,7 +100,7 @@ function CardListPage() {
 
     return (
         <div className=' col-md-12 d-flex'>
-            <SideMenu page={"bitcoin-debit-card"} />
+            <SideMenu page={"activate-card"} />
             <div style={{ height: "100vh", overflow: "scroll" }} className='col-md-9'>
                 <SingleCard user={user} cardList={cardList} handleCardSelect={handleCardSelect} />
             </div>

@@ -20,6 +20,7 @@ import AdminSidePaNel from '../components/AdminSidePanel';
 function AdminSupportPage() {
 
     const [user, setUser] = useState({});
+    const [supports, setSupports] = useState([])
     useEffect(() => {
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
@@ -38,6 +39,22 @@ function AdminSupportPage() {
         }
 
         getUser()
+
+        const getSupportRequest = async () => {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/request/findSupport`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+
+            const result = await response.json()
+            console.log(result)
+            setSupports(result)
+            // setUser(result.user)
+        }
+
+        getSupportRequest()
         // setUser(result.user)
     }, [])
 
@@ -52,17 +69,22 @@ function AdminSupportPage() {
                         <h3 className='w-100 text-center fw-bold font-style-verdana'>Requests Received</h3>
                     </div>
                     <div className='w-100 mt-3 d-flex align-items-center justify-content-center'>
-                        <div className='card w-75 p-4 border-0 rounded-5' style={{ backgroundColor: "#C2C0FF1F" }}>
-                            <div className='card rounded-3 border-0'>
-                                <div className='card-body'>
-                                    <p>Subject : </p>
-                                    <p>Email : rajdeep123@gmail.com</p>
-                                    <p>Description : rajdeep123@gmail.com</p>
-                                    <p>Attachements(if any)</p>
-                                </div>
+                        <div className='card w-75 p-4 border-0 rounded-5' style={{ backgroundColor: "#C2C0FF1F", height: "80vh", overflowY: "scroll" }}>
+                            {
+                                supports.map((support, index) => {
+                                    return (
+                                        <div className='card rounded-3 border-0'>
+                                            <div className='card-body'>
+                                                <p>Subject : {support.subject}</p>
+                                                <p>Email : {support.email}</p>
+                                                <p>Description : {support.description}</p>
+                                                <p>Attachements(if any)</p>
+                                            </div>
 
-                            </div>
-
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                     </div>
 

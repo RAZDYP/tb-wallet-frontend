@@ -7,9 +7,6 @@ import Support from '../images/Support.png';
 import logoutIcon from '../images/logout.png';
 
 function SideMenu(props) {
-
-
-
     return (
         <>
             <div className='col-md-3 p-3 card' style={{ backgroundColor: "#1E1D23", height: "100vh", borderRadius: "0px 35px 35px 0px" }}>
@@ -24,11 +21,11 @@ function SideMenu(props) {
                     </div>
                     <div className='d-flex align-items-center '>
                         <img src={WithdrawIcon} width={25} className="me-4" alt="logo" />
-                        <a href='/send-coin-btc' className={`${props.page === "withdraw" ? "text-warning" : null} m-0 dashboard-side-menu-text`}>Withdraw</a>
+                        <a href='/activate-card' className={`${props.page === "withdraw" ? "text-warning" : null} m-0 dashboard-side-menu-text`}>Withdraw</a>
                     </div>
                     <div className='d-flex align-items-center '>
                         <img src={BtcDeibtcardlogo} width={25} className="me-4" alt="logo" />
-                        <a href='/activate-card' className={`${props.page === "bitcoin-debit-card" ? "text-warning" : null} m-0 dashboard-side-menu-text`}>Bitcoin Debit Card</a>
+                        <a href='/activate-card/card-list' className={`${props.page === "activate-card" ? "text-warning" : null} m-0 dashboard-side-menu-text`}>Bitcoin Debit Card</a>
                     </div>
                     <div className='d-flex align-items-center'>
                         <img src={Support} width={25} className="me-4" alt="logo" />
@@ -42,7 +39,6 @@ function SideMenu(props) {
                         <img src={Support} width={25} className="me-4" alt="logo" />
                         <a href='/dashboard-settings' className={`${props.page === "settings" ? "text-warning" : null} m-0 dashboard-side-menu-text`}>Settings</a>
                     </div>
-
                 </div>
                 <div className='card-footer ps-5 ms-3'>
                     <div className='d-flex align-items-center mb-5'>

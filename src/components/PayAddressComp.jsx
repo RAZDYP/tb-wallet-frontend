@@ -37,7 +37,7 @@ function PayAddressComp() {
 
     return (
         <div className='d-flex justify-content-between'>
-            <SideMenu page={"bitcoin-debit-card"} />
+            <SideMenu page={"activate-card"} />
             <div className='col-md-9 p-3 font-style-verdana' style={{ overflow: "scroll", height: "100vh" }}>
                 <NavTopProfile user={user} />
                 <div className='w-100 mt-4 d-flex flex-column align-items-center'>

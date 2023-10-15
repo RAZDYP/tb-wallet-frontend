@@ -245,7 +245,7 @@ function ActivateCardPayment() {
     return (
         <>
             <div className='col-md-12 d-flex'>
-                <SideMenu page={"bitcoin-debit-card"} />
+                <SideMenu page={"activate-card"} />
 
                 <div className='col-md-9 p-3 font-style-verdana'>
                     <NavTopProfile user={user} />
