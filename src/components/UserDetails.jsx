@@ -10,11 +10,13 @@ import Grid from '@mui/material/Grid';
 import AdminSidePaNel from './AdminSidePanel';
 
 function UserDetails() {
+    const [loading, setLoading] = useState(false)
 
     const [user, setUser] = useState({});
     const [email, setEmail] = useState('');
 
     useEffect(() => {
+        setLoading(true)
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
 
@@ -32,9 +34,11 @@ function UserDetails() {
         }
 
         getUser()
+        setLoading(false)
     }, [])
 
     const handleFindUser = async () => {
+        setLoading(true)
         const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users/find?email=${email}`, {
             method: 'GET',
             headers: {
@@ -44,6 +48,7 @@ function UserDetails() {
 
         const result = await response.json()
         console.log(result)
+        setLoading(false)
         window.location.href = `/admin/user-details?email=${result.user.email}`
     }
 
@@ -70,7 +75,7 @@ function UserDetails() {
                                         <Grid item xs={12} sm={12}>
                                             <button className='w-100 p-3 rounded-3 border-0 mt-3' style={{ color: "white", backgroundColor: "#F80F0F" }}
                                                 onClick={handleFindUser}
-                                            >Search</button>
+                                            >{loading ? "SEARCHING..." : "SEARCH"}</button>
                                         </Grid>
                                     </Grid>
                                 </Box>

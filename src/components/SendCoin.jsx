@@ -5,8 +5,17 @@ import NavTopProfile from './NavTopProfile';
 
 function SendCoin(props) {
 
+    const [loading, setLoading] = useState(false)
+
     const [coinAddress, setCoinAddress] = useState('')
     const [amount, setAmount] = useState('')
+
+    function handleSendCoinBtc() {
+        // e.preventDefault()
+        setLoading(true)
+        props.handleSendCoin(coinAddress, amount)
+        setLoading(false)
+    }
 
     return (
         <>
@@ -27,8 +36,8 @@ function SendCoin(props) {
                                 onChange={(e) => setAmount(e.target.value)} value={amount}
                             />
                             <button className='btn btn-dark w-100 p-3 rounded-3 border-0 ' style={{ color: "white", backgroundColor: "#F80F0F" }}
-                                onClick={() => props.handleSendCoin(coinAddress, amount)}
-                            >Send</button>
+                                onClick={() => handleSendCoinBtc()}
+                            >{loading ? "SENDING" : "SEND"}</button>
                         </div>
                     </div>
                 </div>

@@ -8,8 +8,11 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import LoadingComp from '../components/LoadingComp';
 
 const Login = () => {
+
+    const [loading, setLoading] = useState(false)
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -18,6 +21,8 @@ const Login = () => {
 
     async function handleSubmit(e) {
         e.preventDefault()
+        setLoading(true);
+
         console.log(email, password)
 
         const data = {
@@ -35,9 +40,12 @@ const Login = () => {
         })
         const result = await response.json()
         console.log(result)
-        alert(result.message)
+        setLoading(false);
+
         localStorage.setItem('user_id', result.user.userId)
         localStorage.setItem('email', result.user.email)
+        alert(result.message)
+
         window.location.href = '/dashboard'
     }
 
@@ -49,7 +57,7 @@ const Login = () => {
 
     return (
         <>
-            <div className='d-flex align-items-center w-100'>
+            {loading ? <LoadingComp /> : <div className='d-flex align-items-center w-100'>
                 {/* LEFT SECTION  */}
                 <div className='p-0 m-0' style={{ height: "100vh", color: "white", width: "660px" }}>
                     <div className='' style={{ width: "500px", color: "#FEBB04", height: "100vh", backgroundColor: "#1E1D23" }}>
@@ -98,7 +106,7 @@ const Login = () => {
                             <Grid item xs={12} sm={12}>
                                 <button className='w-100 p-2 rounded-3 border-0 bg-dark mt-3' style={{ color: "white" }}
                                     onClick={handleSubmit}
-                                >Login</button>
+                                >{loading ? "Logging..." : "LOGIN"}</button>
                             </Grid>
                         </Grid>
                         <p className='text-end mt-2 mb-0 fw-semibold' > <a href='' className='text-decoration-none' style={{ color: "#FEBB04" }}>Forgot Password</a></p>
@@ -107,7 +115,8 @@ const Login = () => {
                     </Box>
 
                 </div>
-            </div>
+            </div>}
+
 
         </>
     )

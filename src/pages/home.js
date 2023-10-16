@@ -18,7 +18,6 @@ function Home() {
             backgroundColor: "#1E1D23", padding: 0, margin: 0,
         }}>
 
-            {/* <!-- Navbar section --> */}
 
             <header>
                 <div className="body shadow">

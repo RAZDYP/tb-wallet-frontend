@@ -17,6 +17,7 @@ import { useState, useEffect } from 'react';
 
 
 function DashboardSupportPage() {
+    const [loading, setLoading] = useState(false)
 
     const [user, setUser] = useState({});
 
@@ -25,8 +26,10 @@ function DashboardSupportPage() {
     const [description, setDescription] = useState('')
 
     useEffect(() => {
+        setLoading(false)
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
+
         setEmail(email)
 
         const getUser = async () => {
@@ -43,10 +46,13 @@ function DashboardSupportPage() {
         }
 
         getUser()
+        setLoading(false)
         // setUser(result.user)
     }, [])
 
     const handleCreateSupport = async (e) => {
+        e.preventDefault()
+        setLoading(true)
         const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/request/createSupport`, {
             method: 'POST',
             headers: {
@@ -60,6 +66,7 @@ function DashboardSupportPage() {
         })
 
         const result = await response.json()
+        setLoading(false)
         console.log(result)
     }
 
@@ -96,7 +103,7 @@ function DashboardSupportPage() {
                                         <Grid item xs={12} sm={12}>
                                             <button className='w-100 p-2 rounded-3 border-0 mt-2' style={{ color: "white", backgroundColor: "#F80F0F" }}
                                                 onClick={handleCreateSupport}
-                                            >SUBMIT</button>
+                                            >{loading ? "Creating Support" : "CREATE"}</button>
                                         </Grid>
 
                                     </Grid>

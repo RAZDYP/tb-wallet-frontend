@@ -12,8 +12,11 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import AdminSidePaNel from './AdminSidePanel';
+import LoadingComp from '../components/LoadingComp';
+
 
 function CardControlType() {
+    const [loading, setLoading] = useState(false)
 
     const [searchParams] = useSearchParams()
     const [user, setUser] = useState({});
@@ -24,6 +27,7 @@ function CardControlType() {
     const [cardStatus, setCardStatus] = useState(null)
 
     useEffect(() => {
+        setLoading(true)
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
         const userEmail = searchParams.get('email')
@@ -42,6 +46,7 @@ function CardControlType() {
         }
 
         getUser()
+        setLoading(false)
 
         const handleGetCard = async () => {
             const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/card/findByEmail?email=${userEmail}`, {
@@ -59,10 +64,12 @@ function CardControlType() {
         }
 
         handleGetCard()
+        setLoading(false)
         // setUser(result.user)
     }, [])
 
     const handleActivateCard = async (cardType) => {
+        setLoading(true)
         const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/card/updateCard`, {
             method: 'PATCH',
             headers: {
@@ -76,10 +83,12 @@ function CardControlType() {
 
         const result = await response.json()
         console.log(result)
+        setLoading(false)
         window.location.reload()
     }
 
     const handleInactivateCard = async (cardType) => {
+        setLoading(true)
         const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/card/updateCard/inactive`, {
             method: 'PATCH',
             headers: {
@@ -93,6 +102,7 @@ function CardControlType() {
 
         const result = await response.json()
         console.log(result)
+        setLoading(false)
         window.location.reload()
     }
 
@@ -106,11 +116,12 @@ function CardControlType() {
                 return false
             }
         }
+
     }
 
     return (
         <>
-            <div className='d-flex '>
+            {loading ? <LoadingComp /> : <div className='d-flex '>
                 <AdminSidePaNel />
                 <div className='col-md-9 p-3 font-style-verdana'>
                     <NavTopProfile user={user} />
@@ -167,7 +178,8 @@ function CardControlType() {
                     </div>
 
                 </div>
-            </div>
+            </div>}
+
         </>
     )
 }

@@ -11,14 +11,18 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import AdminSidePaNel from './AdminSidePanel';
 import { useState, useEffect } from 'react';
+import LoadingComp from '../components/LoadingComp';
+
 
 
 
 function CardControl() {
 
+    const [loading, setLoading] = useState(false)
     const [user, setUser] = useState({});
     const [userEmail, setUserEmail] = useState(null)
     useEffect(() => {
+        setLoading(true)
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
 
@@ -36,16 +40,19 @@ function CardControl() {
         }
 
         getUser()
+        setLoading(false)
         // setUser(result.user)
     }, [])
 
     const handleGetCard = async () => {
+        setLoading(true)
         window.location.href = `/card-control/cards?email=${userEmail}`
+        setLoading(false)
     }
 
     return (
         <>
-            <div className='d-flex justify-content-center'>
+            {loading ? <LoadingComp /> : <div className='d-flex justify-content-center'>
                 <AdminSidePaNel page={"card-control"} />
                 <div className='col-md-9 p-3 font-style-verdana' style={{ overflowY: "scroll", height: "100vh" }}>
                     <NavTopProfile user={user} />
@@ -68,7 +75,7 @@ function CardControl() {
                                         <Grid item xs={12} sm={12}>
                                             <button className='w-100 p-3 rounded-3 border-0 mt-3' style={{ color: "white", backgroundColor: "#F80F0F" }}
                                                 onClick={handleGetCard}
-                                            >SEARCH</button>
+                                            >{loading ? "SEARCHING" : "SEARCH"}</button>
                                         </Grid>
                                     </Grid>
                                 </Box>
@@ -77,7 +84,8 @@ function CardControl() {
                     </div>
 
                 </div>
-            </div>
+            </div>}
+
         </>
     )
 }

@@ -35,6 +35,7 @@ import Home from './pages/home';
 import Logout from './pages/logout';
 import SideMenu from './components/SideMenu';
 import CardControlType from './components/CardControlType';
+import CircularIndeterminate from './components/LoadingComp';
 
 
 
@@ -42,14 +43,20 @@ function App() {
   return (
     <>
       <Routes>
+        <Route path='/loading' element={< CircularIndeterminate />}></Route>
+
+
         <Route path='/' element={< Home />}></Route>
         <Route path='/signup' element={< SignUp />}></Route>
         <Route path='/login' element={< Login />}></Route>
+
         <Route path='/reset-password' element={< ResetPassword />}></Route>
 
 
 
         <Route path='/dashboard' element={< Dashboard />}></Route>
+
+        {/* LOADING IS NICELY ADDED TILL THIS ROUTE */}
 
         <Route path='/btc-chart' element={< BtcChartPage />}></Route>
         <Route path='/eth-chart' element={< EthChartPage />}></Route>
@@ -92,7 +99,7 @@ function App() {
         <Route path='/logout' element={<Logout />}></Route>
 
 
-        <Route path='/admin/balance-control/info' element={<BalanceControlCrDr />}></Route>
+        {/* <Route path='/admin/balance-control/info' element={<BalanceControlCrDr />}></Route> */}
       </Routes>
     </>
 

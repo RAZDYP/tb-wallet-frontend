@@ -6,10 +6,12 @@ import { BarChart } from '../components/BarChart'
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import CandlestickChart from '../components/CandlestickChart'
+import LoadingComp from '../components/LoadingComp';
 
 Chart.register(CategoryScale);
 
 function BtcChartPage() {
+    const [loading, setLoading] = useState(true)
 
     const [user, setUser] = useState({});
     const [currentRate, setCurrentRate] = useState(null)
@@ -18,6 +20,8 @@ function BtcChartPage() {
         const email = localStorage.getItem('email')
 
         const getUser = async () => {
+            setLoading(true)
+
             const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users/find?email=${email}`, {
                 method: 'GET',
                 headers: {
@@ -46,6 +50,9 @@ function BtcChartPage() {
         }
 
         handleCurrentAmount()
+        setLoading(false)
+
+
         // setUser(result.user)
     }, [])
 
@@ -53,6 +60,7 @@ function BtcChartPage() {
     const [amount, setAmount] = useState('')
 
     const handleSendBitcoin = async () => {
+        setLoading(true)
         const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/wallet/debitBalance`, {
             method: 'PATCH',
             headers: {
@@ -66,6 +74,7 @@ function BtcChartPage() {
 
         const result = await response.json()
         console.log(result)
+        setLoading(false)
         alert(result.message)
     }
 
@@ -96,7 +105,7 @@ function BtcChartPage() {
 
     return (
         <>
-            <div className=' col-md-12 d-flex'>
+            {loading ? <LoadingComp /> : <div className=' col-md-12 d-flex'>
                 <SideMenu page={"withdraw"} />
                 <div style={{ height: "100vh", overflow: "scroll" }} className='col-md-9 font-style-verdana p-2'>
                     <NavTopProfile user={user} />
@@ -133,7 +142,8 @@ function BtcChartPage() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>}
+
         </>
     )
 }

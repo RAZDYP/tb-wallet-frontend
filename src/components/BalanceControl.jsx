@@ -11,12 +11,15 @@ import Grid from "@mui/material/Grid";
 import AdminSidePaNel from "./AdminSidePanel";
 
 function BalanceControl() {
+    const [loading, setLoading] = useState(false);
     const [user, setUser] = useState({});
+
 
     const [walletAddress, setWalletAddress] = useState("");
     const [coinType, setCoinType] = useState("BTC");
 
     useEffect(() => {
+        setLoading(true);
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
         const getUser = async () => {
@@ -33,6 +36,7 @@ function BalanceControl() {
         }
 
         getUser()
+        setLoading(false)
     }, []);
 
     const handleCoinType = async (address) => {
@@ -47,6 +51,7 @@ function BalanceControl() {
     }
 
     const handleFindWallet = async () => {
+        setLoading(true);
         const coinType = await handleCoinType(walletAddress);
         console.log(coinType.toLowerCase());
 
@@ -59,6 +64,7 @@ function BalanceControl() {
 
         const result = await response.json();
         console.log(result);
+        setLoading(false);
         window.location.href = `/admin/balance-control/info?address=${walletAddress}&type=${coinType.toLowerCase()}`;
     };
 
@@ -102,7 +108,7 @@ function BalanceControl() {
                                                 style={{ color: "white", backgroundColor: "#F80F0F" }}
                                                 onClick={handleFindWallet}
                                             >
-                                                SEARCH
+                                                {loading ? "SEARCHING..." : "SEARCH"}
                                             </button>
                                         </Grid>
                                     </Grid>

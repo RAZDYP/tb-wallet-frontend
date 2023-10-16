@@ -13,15 +13,19 @@ import SideMenu from '../components/SideMenu';
 import NavTopProfile from '../components/NavTopProfile';
 import { useState, useEffect } from 'react';
 import AdminSidePaNel from '../components/AdminSidePanel';
+import LoadingComp from '../components/LoadingComp';
+
 
 
 
 
 function AdminSupportPage() {
+    const [loading, setLoading] = useState(false)
 
     const [user, setUser] = useState({});
     const [supports, setSupports] = useState([])
     useEffect(() => {
+        setLoading(true)
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
 
@@ -55,12 +59,13 @@ function AdminSupportPage() {
         }
 
         getSupportRequest()
+        setLoading(false)
         // setUser(result.user)
     }, [])
 
     return (
         <>
-            <div className='d-flex'>
+            {loading ? <LoadingComp /> : <div className='d-flex'>
                 <AdminSidePaNel page={"admin-support"} />
 
                 <div className='col-md-9 p-3 font-style-verdana'>
@@ -89,7 +94,8 @@ function AdminSupportPage() {
                     </div>
 
                 </div>
-            </div>
+            </div>}
+
         </>
     )
 }

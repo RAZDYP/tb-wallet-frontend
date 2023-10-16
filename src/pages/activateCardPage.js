@@ -10,6 +10,11 @@ import inactiveCardIcon from '../images/inactive-card.png';
 
 function ActivateCardPage() {
 
+
+    const [loading, setLoading] = useState(true);
+
+
+
     const [user, setUser] = useState({});
     const [card, setCard] = useState({});
     const [cardType, setCardType] = useState(null);

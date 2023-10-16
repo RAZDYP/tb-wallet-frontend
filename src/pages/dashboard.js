@@ -13,14 +13,18 @@ import barchart from '../images/bar-chart.png';
 import BarchartRed from '../images/BarChartRed.png';
 import DashboardChart from '../components/DashboardChart';
 import ActivateCard from '../components/ActivateCard';
+import LoadingComp from '../components/LoadingComp';
 function Dashboard() {
 
     const [user, setUser] = useState({});
     const [currentRateBtc, setCurrentRateBtc] = useState(null)
     const [currentRateEth, setCurrentRateEth] = useState(null)
     const [walletDetails, setWalletDetails] = useState({})
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+
+        setLoading(true)
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
 
@@ -38,6 +42,7 @@ function Dashboard() {
         }
 
         getUser()
+
 
         const handleCurrentAmountBtc = async () => {
             const response = await fetch('https://rest.coinapi.io/v1/exchangerate/BTC/USD', {
@@ -86,11 +91,12 @@ function Dashboard() {
             handleCurrentAmountEth()
         }, 1000)
         // setUser(result.user)
+        setLoading(false)
     }, [])
 
     return (
         <>
-            <div className=' col-md-12 d-flex'>
+            {loading ? <LoadingComp /> : <div className=' col-md-12 d-flex'>
                 <SideMenu page={"dashboard"} />
                 <DashboardChart
                     user={user}
@@ -98,7 +104,7 @@ function Dashboard() {
                     currentRateEth={currentRateEth}
                     walletDetails={walletDetails}
                 />
-            </div>
+            </div>}
         </>
     )
 }

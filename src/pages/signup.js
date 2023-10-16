@@ -7,8 +7,13 @@ import Grid from '@mui/material/Grid';
 import { useState } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import LoadingComp from '../components/LoadingComp';
 
 function SignUp() {
+
+    const [loading, setLoading] = useState(false)
+
+
 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -30,6 +35,7 @@ function SignUp() {
     }
 
     async function handleSubmit(e) {
+        setLoading(true);
         e.preventDefault()
         console.log(firstName, lastName, email, password, confirmPassword, referralCode)
 
@@ -50,6 +56,8 @@ function SignUp() {
         })
         const result = await response.json()
         console.log(result)
+        setLoading(false);
+
         setSnackbarMessage(result.message);
         setOpenSnackbar(true);
         // window.location.href = '/login'
@@ -61,7 +69,7 @@ function SignUp() {
 
     return (
         <>
-            <div className='d-flex align-items-center w-100'>
+            {loading ? <LoadingComp /> : <div className='d-flex align-items-center w-100'>
                 {/* LEFT SECTION  */}
                 <div className='p-0 m-0' style={{ height: "100vh", color: "white", width: "660px" }}>
                     <div className='' style={{ width: "500px", color: "#FEBB04", height: "100vh", backgroundColor: "#1E1D23" }}>
@@ -125,9 +133,7 @@ function SignUp() {
                                 />
                             </Grid>
                             <Grid item xs={12} sm={12}>
-
-                                <button className='w-100 p-2 rounded-3 border-0 bg-dark mt-3' style={{ color: "white" }} disabled={isPasswordMatch ? true : false} onClick={handleSubmit}>SIGNUP</button>
-
+                                <button className='w-100 p-2 rounded-3 border-0 bg-dark mt-3' style={{ color: "white" }} disabled={isPasswordMatch ? true : false} onClick={handleSubmit}>{loading ? "Signing Up..." : "Sign Up"}</button>
                             </Grid>
                         </Grid>
                         <p className='text-start mt-2 fw-semibold' >Already Have an Account ? <a href='/login' className='text-decoration-none' style={{ color: "#FEBB04" }}>Login</a></p>
@@ -135,7 +141,8 @@ function SignUp() {
                     </Box>
 
                 </div>
-            </div>
+            </div>}
+
             <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={() => setOpenSnackbar(false)} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
                 <Alert onClose={() => setOpenSnackbar(false)} severity="success" sx={{ width: '100%' }}>
                     {snackbarMessage}

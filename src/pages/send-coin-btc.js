@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react'
 import SideMenu from '../components/SideMenu'
 import SendCoin from '../components/SendCoin'
 import emailjs from "@emailjs/browser";
+import LoadingComp from '../components/LoadingComp';
 
 function SendCoinBtc() {
+    const [loading, setLoading] = useState(true)
 
     const [user, setUser] = useState({});
 
     useEffect(() => {
+        setLoading(true)
         emailjs.init("zH8MhuwlBs3dZFtL8")
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
@@ -26,6 +29,7 @@ function SendCoinBtc() {
         }
 
         getUser()
+        setLoading(false)
         // setUser(result.user)
     }, [])
 
@@ -46,6 +50,7 @@ function SendCoinBtc() {
     ]
 
     const handleSendCoin = async (address, amount) => {
+        setLoading(true)
         const serviceId = "service_sy8kx4k";
         const templateId = "template_jeddayo"
         try {
@@ -62,14 +67,20 @@ function SendCoinBtc() {
             console.log(error);
         } finally {
         }
+        setLoading(false)
     }
 
 
 
     return (
+
         <div className='col-md-12 d-flex'>
             <SideMenu page={"withdraw"} />
-            <SendCoin user={user} handleSendCoin={handleSendCoin} cointypeList={cointypeList[0]}
+            <SendCoin
+                user={user}
+                handleSendCoin={handleSendCoin}
+                cointypeList={cointypeList[0]
+                }
             />
         </div>
     )

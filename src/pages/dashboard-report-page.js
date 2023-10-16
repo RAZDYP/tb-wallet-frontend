@@ -17,6 +17,7 @@ import { useState, useEffect } from 'react';
 
 
 function ReportPage() {
+    const [loading, setLoading] = useState(false)
 
     const [user, setUser] = useState({});
 
@@ -25,6 +26,7 @@ function ReportPage() {
     const [description, setDescription] = useState('')
 
     useEffect(() => {
+        setLoading(true)
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
 
@@ -42,11 +44,13 @@ function ReportPage() {
         }
 
         getUser()
+        setLoading(false)
         // setUser(result.user)
     }, [])
 
     const handleCreateReport = async (e) => {
         e.preventDefault()
+        setLoading(true)
         console.log(subject, email, description)
         const data = {
             subject,
@@ -64,6 +68,7 @@ function ReportPage() {
 
         const result = await response.json()
         console.log(result)
+        setLoading(false)
         alert(result.requestType)
 
     }
@@ -101,7 +106,7 @@ function ReportPage() {
                                         <Grid item xs={12} sm={12}>
                                             <button className='w-100 p-2 rounded-3 border-0 mt-2' style={{ color: "white", backgroundColor: "#F80F0F" }}
                                                 onClick={handleCreateReport}
-                                            >SUBMIT</button>
+                                            >{loading ? "Creating Report" : "SUBMIT"}</button>
                                         </Grid>
 
                                     </Grid>

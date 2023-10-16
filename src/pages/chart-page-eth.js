@@ -5,16 +5,20 @@ import NavTopProfile from '../components/NavTopProfile'
 import { BarChart } from '../components/BarChart'
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
+import LoadingComp from '../components/LoadingComp';
 
 Chart.register(CategoryScale);
 
 function EthChartPage() {
+    const [loading, setLoading] = useState(true)
 
     const [user, setUser] = useState({});
     const [currentRate, setCurrentRate] = useState(null)
 
 
     useEffect(() => {
+        setLoading(true)
+
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
 
@@ -47,6 +51,7 @@ function EthChartPage() {
         }
 
         handleCurrentAmount()
+        setLoading(false)
         // setUser(result.user)
     }, [])
 
@@ -97,7 +102,7 @@ function EthChartPage() {
 
     return (
         <>
-            <div className=' col-md-12 d-flex'>
+            {loading ? <LoadingComp /> : <div className=' col-md-12 d-flex'>
                 <SideMenu page={"withdraw"} />
                 <div style={{ height: "100vh", overflow: "scroll" }} className='col-md-9 font-style-verdana p-2'>
                     <NavTopProfile user={user} />
@@ -134,7 +139,8 @@ function EthChartPage() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>}
+
         </>
     )
 }

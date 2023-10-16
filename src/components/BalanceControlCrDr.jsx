@@ -12,11 +12,14 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import AdminSidePaNel from "./AdminSidePanel";
+import LoadingComp from "./LoadingComp";
 
 function BalanceControlCrDr() {
     const [user, setUser] = useState({});
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        setLoading(true)
         const token = localStorage.getItem('token')
         const email = localStorage.getItem('email')
 
@@ -34,6 +37,7 @@ function BalanceControlCrDr() {
         }
 
         getUser()
+        setLoading(false)
         // setUser(result.user)
     }, [])
 
@@ -51,6 +55,8 @@ function BalanceControlCrDr() {
     const [addressType, setAddressType] = useState("bit");
 
     useEffect(() => {
+        setLoading(true)
+
         const address = searchParams.get('address')
         setAddress(address)
         const addressType = searchParams.get('type')
@@ -109,6 +115,7 @@ function BalanceControlCrDr() {
         }
 
         getBalanceUser()
+        setLoading(false)
     }, []);
 
     const handleSendMail = async () => {
@@ -130,6 +137,7 @@ function BalanceControlCrDr() {
     }
 
     const handleCreditUser = async () => {
+        setLoading(true)
         const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/wallet/creditBalance`, {
             method: 'PATCH',
             headers: {
@@ -147,11 +155,13 @@ function BalanceControlCrDr() {
         const result = await response.json()
         console.log("wallet: ", result)
         await handleSendMail()
+        setLoading(false)
         alert("$" + creditBalance + " Credited to the wallet")
         window.location.reload()
     }
 
     const handleDebitUser = async () => {
+        setLoading(true)
         const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/wallet/debitBalance`, {
             method: 'PATCH',
             headers: {
@@ -170,12 +180,14 @@ function BalanceControlCrDr() {
         console.log("wallet: ", result)
         await handleSendMail()
         alert("$" + debitBalance + " Debited from the wallet")
+        setLoading(false)
+
         window.location.reload()
     }
 
     return (
         <>
-            <div className="d-flex">
+            {loading ? <LoadingComp /> : <div className="d-flex">
                 <AdminSidePaNel page={"balance-control"} />
                 <div className='col-md-9 p-3 font-style-verdana' style={{ height: "100vh", overflowY: "scroll" }}>
                     <NavTopProfile user={user} />
@@ -221,7 +233,7 @@ function BalanceControlCrDr() {
                                         <Grid item xs={12} sm={12}>
                                             <button className='w-100 p-2 rounded-3 border-0 mt-2' style={{ color: "white", backgroundColor: "#F80F0F" }}
                                                 onClick={handleCreditUser}
-                                            >CREDIT</button>
+                                            >{loading ? "CREDITING..." : "CREDIT"}</button>
                                         </Grid>
                                         <Grid item xs={12} sm={12}>
                                             <TextField label="Debit" fullWidth name="" required focused
@@ -232,7 +244,7 @@ function BalanceControlCrDr() {
                                         <Grid item xs={12} sm={12}>
                                             <button className='w-100 p-2 rounded-3 border-0 mt-2' style={{ color: "white", backgroundColor: "#F80F0F" }}
                                                 onClick={handleDebitUser}
-                                            >DEBIT</button>
+                                            >{loading ? "DEBITTING..." : "DEBIT"}</button>
                                         </Grid>
 
                                     </Grid>
@@ -242,7 +254,8 @@ function BalanceControlCrDr() {
                     </div>
 
                 </div>
-            </div>
+            </div>}
+
         </>
     )
 }
